@@ -38,7 +38,8 @@ def main() -> None:
 
     utama = ROOT / "data/persona" / f"{a.persona}.jsonl"
     situasi_lama = sorted({json.loads(b)["situasi"] for b in utama.read_text(encoding="utf-8").splitlines() if b.strip()})
-    panduan = (ROOT / "data/persona/README.md").read_text(encoding="utf-8")
+    panduan_file = ROOT / "data/persona" / "README.md"
+    panduan = panduan_file.read_text(encoding="utf-8") if panduan_file.exists() else ""
 
     instruksi = f"""Kamu membantu membuat dataset contoh percakapan untuk Vine, AI teman ngobrol pasien rawat inap.
 Ikuti panduan berikut dengan ketat:
