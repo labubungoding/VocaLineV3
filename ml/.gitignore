@@ -4,9 +4,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-models/*
-!models/README.md
-!models/baseline-*.joblib
+# models (model.safetensors dilacak dengan Git LFS)
 
 data/*/processed/
 data/wakeword/positif/*
