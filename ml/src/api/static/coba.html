@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coba Vine</title>
+<style>
+    :root { --bg:#f6f7f9; --kartu:#fff; --teks:#1d2430; --redup:#667085; --garis:#e3e6ea; --utama:#2f6f4f;
+              --merah:#d92d20; --oranye:#f79009; --hijau:#12b76a; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--teks); }
+      main { max-width:760px; margin:0 auto; padding:16px; }
+      h1 { font-size:1.4rem; margin:8px 0 4px; } h2 { font-size:1rem; margin:0 0 10px; }
+      .kecil { color:var(--redup); font-size:.85rem; }
+      .kartu { background:var(--kartu); border:1px solid var(--garis); border-radius:12px; padding:14px; margin:12px 0; }
+      .baris { display:flex; flex-wrap:wrap; gap:10px; align-items:end; }
+      label { display:flex; flex-direction:column; font-size:.8rem; color:var(--redup); gap:4px; flex:1 1 140px; }
+      input, select, textarea { font:inherit; padding:8px; border:1px solid var(--garis); border-radius:8px; color:var(--teks); background:#fff; }
+      button { font:inherit; padding:9px 14px; border-radius:8px; border:1px solid var(--garis); background:#fff; cursor:pointer; }
+      button.utama { background:var(--utama); color:#fff; border-color:var(--utama); }
+      button:disabled { opacity:.5; cursor:default; }
+      #vine { width:120px; height:120px; border-radius:50%; margin:6px auto 12px; background:#9ccfb3; transition:background .4s, transform .2s; }
+      #vine.kuning { background:#fdd34d; } #vine.biru { background:#7fb6f5; } #vine.tenang { background:#b8c7d9; } #vine.ramah { background:#9ccfb3; }
+      #vine.dengar { transform:scale(1.08); box-shadow:0 0 0 10px rgba(47,111,79,.15); }
+      #tombolBicara { display:block; width:100%; padding:22px; font-size:1.1rem; user-select:none; touch-action:none; }
+      #tombolBicara.rekam { background:var(--merah); border-color:var(--merah); }
+      #log { display:flex; flex-direction:column; gap:10px; }
+      .pesan { border-radius:10px; padding:10px 12px; max-width:90%; }
+      .pasien { align-self:flex-end; background:#e8f1ec; }
+      .vine { align-self:flex-start; background:#f2f4f7; }
+      .info { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+      .tag { font-size:.75rem; padding:2px 8px; border-radius:99px; background:#fff; border:1px solid var(--garis); }
+      .tag.merah { background:var(--merah); color:#fff; border-color:var(--merah); }
+      .tag.oranye { background:var(--oranye); color:#fff; border-color:var(--oranye); }
+      .tag.hijau { background:var(--hijau); color:#fff; border-color:var(--hijau); }
+      #status { min-height:1.2em; }
+      .galat { color:var(--merah); }
+      @media (max-width:520px){ .pesan{max-width:100%;} }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Coba Vine</h1>
+  <div class="kecil">Halaman uji tim (MODE_DEV). Pakai data uji saja, jangan data pasien asli.</div>
+
+  <section class="kartu">
+    <h2>Pengaturan</h2>
+    <div class="baris">
+      <label>API key (ML_API_KEY)<input id="kunci" type="password" autocomplete="off"></label>
+      <label>Nama panggilan<input id="nama" value="Pak Budi" maxlength="40"></label>
+      <label>Umur<input id="umur" type="number" value="65" min="0" max="130"></label>
+      <label>Persona<select id="persona"><option value="">otomatis dari umur</option><option>remaja</option><option>dewasa</option><option>lansia</option></select></label>
+    </div>
+    <div class="baris" style="margin-top:10px">
+      <label><span><input id="bacakan" type="checkbox" checked> Bacakan balasan</span></label>
+      <button id="tombolSapa">Sapa (mulai sesi baru)</button>
+      <button id="tombolReset">Reset sesi</button>
+    </div>
+  </section>
+
+  <section class="kartu">
+    <div id="vine" class="ramah"></div>
+    <button id="tombolBicara" class="utama">Tahan untuk bicara</button>
+    <div class="baris" style="margin-top:10px">
+      <label>Atau ketik<input id="teks" placeholder="contoh: dada saya sakit sekali"></label>
+      <button id="tombolKirim">Kirim</button>
+    </div>
+    <p id="status" class="kecil"></p>
+    <div id="log"></div>
+  </section>
+
+  <section class="kartu">
+    <h2>Simpan sebagai rekaman uji Whisper</h2>
+    <div class="kecil">Ucapan terakhir bisa disimpan ke data/stt_test/ untuk evaluate_stt.py. Perbaiki teksnya jadi kalimat yang BENAR-BENAR diucapkan.</div>
+    <div class="baris" style="margin-top:10px">
+      <label style="flex:3 1 260px">Kalimat yang diucapkan<input id="teksBenar"></label>
+      <label>Kelompok<select id="kelompok"><option>remaja</option><option>dewasa</option><option selected>lansia</option><option>buruk</option></select></label>
+      <button id="tombolSimpan" disabled>Simpan</button>
+    </div>
+  </section>
+</main>
+
+<script>
+    const $ = id => document.getElementById(id);
+    const ID_KASUR = "uji-coba-" + Math.random().toString(36).slice(2, 7);
+    let jumlahTanyaUlang = 0, rekamanTerakhir = null, perekam = null, potongan = [], streamMic = null, volume = 1;
+
+    try { $("kunci").value = localStorage.getItem("vine_kunci") || ""; } catch (e) {}
+    $("kunci").addEventListener("change", () => { try { localStorage.setItem("vine_kunci", $("kunci").value); } catch (e) {} });
+
+    function dataPasien() {
+      const d = { id_kasur: ID_KASUR, nama_panggilan: $("nama").value.trim() };
+      const umur = parseInt($("umur").value, 10);
+      if (!isNaN(umur)) d.umur = umur;
+      if ($("persona").value) d.persona = $("persona").value;
+      return d;
+    }
+    function status(t, galat) { $("status").textContent = t; $("status").className = galat ? "kecil galat" : "kecil"; }
+
+    async function panggil(jalur, isi) {
+      const r = await fetch(jalur, { method: "POST", headers: { "Content-Type": "application/json", "X-API-Key": $("kunci").value }, body: JSON.stringify(isi) });
+      if (!r.ok) throw new Error(r.status === 401 ? "API key salah atau kosong" : `${r.status}: ${await r.text()}`);
+      return r.json();
+    }
+
+    function tambahPesan(kelas, teks, tags) {
+      const div = document.createElement("div");
+      div.className = "pesan " + kelas;
+      div.textContent = teks;
+      if (tags && tags.length) {
+        const info = document.createElement("div"); info.className = "info";
+        for (const [t, k] of tags) { const s = document.createElement("span"); s.className = "tag " + (k || ""); s.textContent = t; info.appendChild(s); }
+        div.appendChild(info);
+      }
+      $("log").prepend(div);
+    }
+
+    function ucapkan(j) {
+      $("vine").className = j.visual_vine || "ramah";
+      if (!$("bacakan").checked) return;
+      if (j.balasan_audio) {
+        const a = new Audio("data:audio/wav;base64," + j.balasan_audio); a.volume = volume; a.play(); return;
+      }
+      if (!("speechSynthesis" in window)) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(j.balasan_teks);
+      u.lang = "id-ID"; u.rate = j.kecepatan_bicara || 1; u.volume = volume;
+      const suaraId = speechSynthesis.getVoices().find(v => v.lang && v.lang.toLowerCase().startsWith("id"));
+      if (suaraId) u.voice = suaraId;
+      speechSynthesis.speak(u);
+    }
+
+    function tampilkanJawaban(j) {
+      tambahPesan("pasien", j.teks_pasien || "(tidak terdengar)", [[`yakin ${Number(j.skor_keyakinan).toFixed(2)}`]]);
+      const tags = [[j.level_alarm.toUpperCase(), j.level_alarm], ["maksud: " + j.maksud], ["emosi: " + j.emosi],
+                    ["sumber: " + j.sumber_balasan], [j.waktu_proses_ms + " ms"]];
+      if (j.perintah) tags.push(["perintah: " + j.perintah]);
+      if (j.level_alarm !== "hijau") tags.push(["alarm: " + j.ringkasan_alarm]);
+      tambahPesan("vine", j.balasan_teks, tags);
+      jumlahTanyaUlang = j.perlu_tanya_ulang ? jumlahTanyaUlang + 1 : 0;
+      if (j.perintah === "volume_turun") volume = Math.max(0.2, volume - 0.2);
+      if (j.perintah === "volume_naik") volume = Math.min(1, volume + 0.2);
+      if (j.perintah !== "diam" && j.perintah !== "vine_off") ucapkan(j);
+      else { speechSynthesis && speechSynthesis.cancel(); $("vine").className = j.visual_vine || "tenang"; }
+    }
+
+    $("tombolSapa").onclick = async () => {
+      try { status("Menyapa..."); const j = await panggil("/greeting", dataPasien()); jumlahTanyaUlang = 0;
+            $("log").innerHTML = ""; tambahPesan("vine", j.balasan_teks, [["sapaan"]]); ucapkan(j); status(""); }
+      catch (e) { status(e.message, true); }
+    };
+    $("tombolReset").onclick = async () => {
+      try { await panggil("/reset-session", { id_kasur: ID_KASUR }); jumlahTanyaUlang = 0; $("log").innerHTML = ""; status("Sesi direset."); }
+      catch (e) { status(e.message, true); }
+    };
+
+    async function kirimTeks() {
+      const teks = $("teks").value.trim(); if (!teks) return;
+      $("teks").value = "";
+      try { status("Memproses..."); tampilkanJawaban(await panggil("/process-text", { ...dataPasien(), teks, jumlah_tanya_ulang: jumlahTanyaUlang })); status(""); }
+      catch (e) { status(e.message, true); }
+    }
+    $("tombolKirim").onclick = kirimTeks;
+    $("teks").addEventListener("keydown", e => { if (e.key === "Enter") kirimTeks(); });
+
+    function tipeRekaman() {
+      for (const t of ["audio/webm;codecs=opus", "audio/ogg;codecs=opus", "audio/mp4", "audio/webm"])
+        if (window.MediaRecorder && MediaRecorder.isTypeSupported(t)) return t;
+      return "";
+    }
+    async function mulaiRekam() {
+      if (perekam && perekam.state === "recording") return;
+      if (!navigator.mediaDevices) { status("Mikrofon hanya bisa di http://127.0.0.1 atau https.", true); return; }
+      try {
+        streamMic = streamMic || await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true } });
+      } catch (e) { status("Izin mikrofon ditolak.", true); return; }
+      speechSynthesis && speechSynthesis.cancel();
+      const tipe = tipeRekaman();
+      perekam = new MediaRecorder(streamMic, tipe ? { mimeType: tipe } : undefined);
+      potongan = [];
+      perekam.ondataavailable = e => e.data.size && potongan.push(e.data);
+      perekam.onstop = kirimRekaman;
+      perekam.start();
+      $("tombolBicara").classList.add("rekam"); $("tombolBicara").textContent = "Mendengarkan... lepas untuk kirim";
+      $("vine").classList.add("dengar"); status("");
+    }
+    function berhentiRekam() {
+      if (perekam && perekam.state === "recording") perekam.stop();
+      $("tombolBicara").classList.remove("rekam"); $("tombolBicara").textContent = "Tahan untuk bicara";
+      $("vine").classList.remove("dengar");
+    }
+    function keDataUrl(blob) { return new Promise(r => { const f = new FileReader(); f.onload = () => r(f.result); f.readAsDataURL(blob); }); }
+
+    async function kirimRekaman() {
+      const blob = new Blob(potongan, { type: perekam.mimeType || "audio/webm" });
+      if (blob.size < 2000) { status("Terlalu singkat, tahan tombol selama bicara."); return; }
+      const audio = await keDataUrl(blob);
+      try {
+        status("Whisper sedang mendengarkan...");
+        const j = await panggil("/process-audio", { ...dataPasien(), audio, jumlah_tanya_ulang: jumlahTanyaUlang });
+        tampilkanJawaban(j); status("");
+        rekamanTerakhir = audio; $("teksBenar").value = j.teks_pasien || ""; $("tombolSimpan").disabled = false;
+      } catch (e) { status(e.message, true); }
+    }
+
+    const tb = $("tombolBicara");
+    tb.addEventListener("pointerdown", e => { e.preventDefault(); tb.setPointerCapture(e.pointerId); mulaiRekam(); });
+    tb.addEventListener("pointerup", berhentiRekam);
+    tb.addEventListener("pointercancel", berhentiRekam);
+    document.addEventListener("keydown", e => { if (e.code === "Space" && e.target === document.body && !e.repeat) { e.preventDefault(); mulaiRekam(); } });
+    document.addEventListener("keyup", e => { if (e.code === "Space" && e.target === document.body) berhentiRekam(); });
+
+    $("tombolSimpan").onclick = async () => {
+      const teks = $("teksBenar").value.trim();
+      if (!rekamanTerakhir || !teks) { status("Isi kalimat yang diucapkan dulu.", true); return; }
+      try {
+        const j = await panggil("/dev/simpan-rekaman", { audio: rekamanTerakhir, teks, kelompok: $("kelompok").value });
+        status(`Tersimpan: ${j.file} (rekaman ke-${j.jumlah_rekaman} untuk kelompok ini)`);
+        $("tombolSimpan").disabled = true; rekamanTerakhir = null;
+      } catch (e) { status(e.message, true); }
+    };
+    if ("speechSynthesis" in window) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+  </script>
+</body>
+</html>

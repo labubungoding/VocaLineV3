@@ -1,0 +1,14 @@
+.schedule { max-width: 820px; display: flex; flex-direction: column; gap: 16px; }
+
+.schedule__scope { padding: 18px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+.schedule__scope-field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 260px; }
+.schedule__scope-label { font-size: 14px; font-weight: 700; }
+.schedule__room { flex: 1 1 200px; }
+
+.schedule__list { padding: 8px 18px 18px; display: flex; flex-direction: column; overflow-x: auto; }
+.schedule-row { display: grid; grid-template-columns: 140px minmax(0, 1fr) 90px 52px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid #edf2f2; min-width: 400px; }
+.schedule-row--head { font-size: 13px; font-weight: 700; color: var(--muted); border-bottom: 1px solid var(--line); }
+.schedule__add { align-self: flex-start; margin-top: 16px; }
+
+.schedule__footer { display: flex; justify-content: flex-end; gap: 12px; align-items: center; }
+.schedule__save { min-width: 160px; }

@@ -1,0 +1,16 @@
+.emotion-screen { --emo-bg: #eaf2f2; --emo-accent: #0f6e74; --emo-core: #b5d4d6; --emo-chip-ink: #fff; }
+.emotion-screen[data-emotion="angry"] { --emo-bg: #fbe4e1; --emo-accent: #c8423a; --emo-core: #f3b4ad; --emo-chip-ink: #fff; }
+.emotion-screen[data-emotion="happy"] { --emo-bg: #fff4cc; --emo-accent: #e0a800; --emo-core: #ffe27a; --emo-chip-ink: #3a2a00; }
+.emotion-screen[data-emotion="sad"] { --emo-bg: #e2edf9; --emo-accent: #2f6fb3; --emo-core: #b6cfee; --emo-chip-ink: #fff; }
+
+.emotion-screen { height: 100%; padding: 28px 32px; display: flex; flex-direction: column; gap: 16px; background: var(--emo-bg); transition: background .4s; }
+.emotion-screen .talk-screen__listening { color: var(--ink); }
+
+.emotion-screen__center { flex-grow: 1; display: flex; align-items: center; gap: 36px; flex-wrap: wrap; justify-content: center; }
+.emotion-screen__avatar { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.emotion-screen .ai-avatar { --ai-size: 250px; }
+.emotion-screen__chip { font-size: 15px; font-weight: 700; padding: 6px 14px; background: var(--emo-accent); color: var(--emo-chip-ink); }
+
+.emotion-screen__panel { flex: 1 1 400px; display: flex; flex-direction: column; gap: 16px; }
+.emotion-screen__said { align-self: flex-end; max-width: 80%; font-size: 18px; padding: 12px 16px; border-radius: 16px 16px 4px 16px; background: rgba(255, 255, 255, .7); color: #3c4a4c; }
+.emotion-screen__reply { max-width: 92%; font-size: var(--pt-cap); line-height: 1.4; padding: 18px 22px; border-radius: 16px 16px 16px 4px; background: #fff; border-left: 8px solid var(--emo-accent); font-weight: 700; }

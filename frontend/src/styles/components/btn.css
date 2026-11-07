@@ -1,0 +1,21 @@
+.btn { font: inherit; font-size: 14px; font-weight: 700; min-height: 44px; padding: 10px 16px; border-radius: var(--radius); border: 1.5px solid var(--accent); background: #fff; color: var(--accent); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; }
+.btn:hover { filter: brightness(0.95); }
+.btn--primary { background: var(--accent); color: #fff; }
+.btn--primary:hover { color: #fff; }
+.btn--danger { background: var(--red); border-color: var(--red); color: #fff; }
+.btn--danger:hover { color: #fff; }
+.btn--success { background: var(--green); border-color: var(--green); color: #fff; }
+.btn--ghost { background: transparent; border-color: transparent; }
+.btn--ghost.btn--danger { color: var(--red); background: transparent; border-color: transparent; }
+.btn--icon { min-width: 44px; padding: 8px; }
+.btn--block { width: 100%; }
+.btn--sm { min-height: 36px; padding: 6px 10px; font-size: 13px; }
+.btn[disabled], .btn[aria-disabled="true"] { background: var(--grey); border-color: var(--grey); color: var(--muted); cursor: not-allowed; pointer-events: none; }
+
+.chip { font: inherit; font-size: 13px; font-weight: 700; min-height: 36px; padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+
+.btn-emergency { position: relative; width: 200px; height: 120px; border-radius: 22px; border: 4px solid #7d1a14; background: var(--red); color: #fff; font: inherit; font-weight: 700; font-size: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; flex-shrink: 0; user-select: none; touch-action: none; }
+.btn-emergency small { font-size: 14px; font-weight: 400; }
+.btn-emergency .hold { position: absolute; left: 14px; right: 14px; bottom: 10px; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .3); }
+.btn-emergency .hold span { display: block; height: 5px; border-radius: 3px; background: #fff; }
+.btn-emergency.is-sent { background: #7d1a14; }

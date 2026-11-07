@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d4fb8" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/admin/admin.css" />
+    <link rel="stylesheet" href="/src/apps/admin/pages/overview.css" />
+    <title>Ringkasan · Superadmin</title>
+  </head>
+  <body>
+    <div class="app-shell theme-admin">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <h1 class="page-title">Ringkasan sistem</h1>
+
+          <p id="sa-setup-reminder" class="alert alert--info" hidden>
+            Pemasangan pertama belum selesai. <a href="/admin/setup">Lanjutkan wizard pemasangan</a>.
+          </p>
+
+          <div class="stats">
+            <a id="sa-stat-online" href="/admin/tablets" class="stat">
+              <span class="muted stat__label">Tablet online</span>
+              <b class="stat__value stat__value--green" data-stat="online">0</b>
+            </a>
+            <a id="sa-stat-offline" href="/admin/tablets" class="stat">
+              <span class="muted stat__label">Tablet offline</span>
+              <b class="stat__value stat__value--red" data-stat="offline">0</b>
+            </a>
+            <a id="sa-stat-low-battery" href="/admin/tablets" class="stat">
+              <span class="muted stat__label">Baterai rendah</span>
+              <b class="stat__value stat__value--orange" data-stat="lowBattery">0</b>
+            </a>
+            <a id="sa-stat-alarms-today" href="/admin/stats" class="stat">
+              <span class="muted stat__label">Alarm hari ini</span>
+              <b class="stat__value" data-stat="alarmsToday">0</b>
+            </a>
+          </div>
+
+          <section class="card panel">
+            <div class="page-head">
+              <h2 class="panel__title">Status tablet</h2>
+              <div id="sa-filter-tablet-status" role="radiogroup" aria-label="Filter status" class="seg-group">
+                <button type="button" role="radio" class="seg" data-value="all" aria-checked="true">Semua</button>
+                <button type="button" role="radio" class="seg" data-value="online" aria-checked="false">Online</button>
+                <button type="button" role="radio" class="seg" data-value="offline" aria-checked="false">Offline</button>
+                <button type="button" role="radio" class="seg" data-value="low-battery" aria-checked="false">Baterai rendah</button>
+              </div>
+              <button id="sa-btn-refresh-status" type="button" class="btn btn--icon" aria-label="Muat ulang status">↻</button>
+            </div>
+            <p class="muted text-xs">Tablet offline atau baterai rendah: hubungi perawat bangsal untuk memeriksa atau mengisi daya.</p>
+            <div class="table-scroll">
+              <table id="sa-tablet-status-table" class="tbl overview__table">
+                <thead>
+                  <tr><th>Tablet</th><th>Kasur</th><th>Status</th><th>Baterai</th><th>Terakhir aktif</th></tr>
+                </thead>
+                <tbody id="sa-tablet-status-rows"></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/admin/pages/overview.js"></script>
+  </body>
+</html>

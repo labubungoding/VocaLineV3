@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d4fb8" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/admin/admin.css" />
+    <link rel="stylesheet" href="/src/apps/admin/pages/stats.css" />
+    <title>Statistik alarm · Superadmin</title>
+  </head>
+  <body>
+    <div class="app-shell theme-admin">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <div class="page-head">
+            <h1 class="page-title">Statistik alarm</h1>
+            <button id="sa-btn-export-csv" type="button" class="btn">Unduh CSV</button>
+          </div>
+          <p class="muted text-sm">Tanpa nama pasien. <span id="sa-stats-total">0</span> alarm di rentang ini.</p>
+
+          <div class="card stats-filter">
+            <label class="lbl stats-filter__date">Dari<input id="sa-input-date-from" class="fi" type="date" /></label>
+            <label class="lbl stats-filter__date">Sampai<input id="sa-input-date-to" class="fi" type="date" /></label>
+            <label class="lbl stats-filter__ward">
+              Bangsal
+              <select id="sa-select-stats-ward" class="fi"></select>
+            </label>
+            <div id="sa-filter-stats-level" class="stats-filter__levels">
+              <button type="button" class="chip chip--red" data-level="red" aria-pressed="true">Merah</button>
+              <button type="button" class="chip chip--orange" data-level="orange" aria-pressed="true">Oranye</button>
+            </div>
+          </div>
+
+          <div class="charts">
+            <section id="sa-chart-alarm-count" class="card chart">
+              <div class="chart__head">
+                <h2 class="chart__title">Jumlah alarm per hari</h2>
+                <span class="chart__legend">
+                  <span><i class="dot chart__dot--red"></i> Merah</span>
+                  <span><i class="dot chart__dot--orange"></i> Oranye</span>
+                </span>
+              </div>
+              <div id="sa-chart-bars" class="bars"></div>
+              <div id="sa-chart-days" class="bars__labels"></div>
+            </section>
+
+            <section id="sa-chart-response-time" class="card chart">
+              <h2 class="chart__title">Rata-rata waktu respons</h2>
+              <div id="sa-chart-response" class="response"></div>
+              <p class="muted text-xs">Dari alarm masuk sampai perawat menekan Selesai.</p>
+            </section>
+          </div>
+
+          <div class="card table-card">
+            <table id="sa-alarm-log-table" class="tbl stats__table">
+              <thead><tr><th>Waktu</th><th>Bangsal · kamar</th><th>Level</th><th>Ringkasan</th><th>Respons</th></tr></thead>
+              <tbody id="sa-alarm-log-rows"></tbody>
+            </table>
+            <p id="sa-alarm-log-more" class="muted text-xs stats__more" hidden>Menampilkan 50 terbaru. Unduh CSV untuk semuanya.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/admin/pages/stats.js"></script>
+  </body>
+</html>

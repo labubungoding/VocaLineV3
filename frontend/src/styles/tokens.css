@@ -1,0 +1,38 @@
+:root {
+  --ink: #132a2c;
+  --muted: #4d666a;
+  --bg: #f4f7f7;
+  --bg-tablet: #eaf2f2;
+  --surface: #fff;
+  --line: #d5e1e2;
+  --line-input: #b9c9ca;
+
+  --accent: #10B981;
+  --accent-dark: #0a5257;
+  --accent-soft: #dcefef;
+
+  --red: #b3261e;
+  --red-soft: #fbe3e0;
+  --red-ink: #6e140f;
+  --orange: #d97a0c;
+  --orange-soft: #fdebd6;
+  --orange-ink: #6b3600;
+  --green: #2a7a43;
+  --green-soft: #dff2e4;
+  --green-ink: #1d5a31;
+  --grey: #c9d6d7;
+  --info: #2fb38e;
+
+  --radius: 8px;
+  --radius-card: 12px;
+  --font: 'Lato', system-ui, sans-serif;
+  --mono: 'Lato', ui-monospace, monospace;
+}
+
+.theme-admin {
+  --accent: #10B981;
+  --accent-dark: #0a5257;
+  --accent-soft: #e3faf6;
+  --line: #d9dde8;
+  --muted: #55607a;
+}

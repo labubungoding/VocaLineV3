@@ -1,0 +1,10 @@
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.stat { display: flex; flex-direction: column; gap: 4px; padding: 16px; border-radius: 12px; background: #fff; border: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.stat:hover { color: var(--ink); border-color: var(--accent); }
+.stat__label { font-size: 13px; }
+.stat__value { font-size: 30px; }
+.stat__value--green { color: var(--green); }
+.stat__value--red { color: var(--red); }
+.stat__value--orange { color: #a85400; }
+
+.overview__table { min-width: 620px; }

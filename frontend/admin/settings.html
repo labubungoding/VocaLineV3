@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d4fb8" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/admin/admin.css" />
+    <link rel="stylesheet" href="/src/apps/admin/pages/settings.css" />
+    <title>Umur &amp; eskalasi · Superadmin</title>
+  </head>
+  <body>
+    <div class="app-shell theme-admin">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <div class="settings">
+            <div class="page-head">
+              <h1 class="page-title">Rentang umur &amp; eskalasi</h1>
+              <button id="sa-btn-save-settings" type="button" class="btn btn--primary">Simpan</button>
+            </div>
+            <p class="muted text-sm">
+              Gaya bicara dan aturan deteksi AI diatur oleh tim pengembang. Di sini rumah sakit hanya menentukan rentang umur tiap
+              kelompok pasien dan batas waktu eskalasi.
+            </p>
+            <p id="sa-settings-error" role="alert" class="alert alert--error" hidden></p>
+
+            <section id="sa-age-ranges" class="card settings__card">
+              <h2 class="settings__title">Rentang umur kelompok pasien</h2>
+              <p class="muted text-xs settings__sub">Tablet memilih kelompok otomatis dari umur yang diisi perawat.</p>
+
+              <div class="age-row">
+                <b>Remaja</b>
+                <label class="lbl">Umur minimum<input id="sa-input-age-min-teen" class="fi" type="number" min="0" max="30" data-age="teenMin" /></label>
+                <label class="lbl">Umur maksimum<input id="sa-input-age-max-teen" class="fi" type="number" min="0" max="30" data-age="teenMax" /></label>
+              </div>
+              <div class="age-row">
+                <b>Dewasa</b>
+                <label class="lbl">Umur minimum<input id="sa-input-age-min-adult" class="fi" type="number" min="10" max="80" data-age="adultMin" /></label>
+                <label class="lbl">Umur maksimum<input id="sa-input-age-max-adult" class="fi" type="number" min="10" max="100" data-age="adultMax" /></label>
+              </div>
+              <div class="age-row age-row--last">
+                <b>Lansia</b>
+                <label class="lbl">Umur minimum<input id="sa-input-age-min-elder" class="fi" type="number" min="40" max="100" data-age="elderMin" /></label>
+                <span class="muted age-row__note">ke atas</span>
+              </div>
+
+              <p class="muted text-xs settings__note">Pasien di bawah umur minimum remaja tidak diberi tablet.</p>
+            </section>
+
+            <section class="card settings__card settings__card--gap">
+              <h2 class="settings__title">Batas waktu eskalasi (menit)</h2>
+              <div class="escalation-grid">
+                <label class="lbl">Alarm merah<input id="sa-input-escalation-red" class="fi" type="number" min="1" max="60" data-escalation="red" /></label>
+                <label class="lbl">Alarm oranye<input id="sa-input-escalation-orange" class="fi" type="number" min="1" max="120" data-escalation="orange" /></label>
+              </div>
+              <p class="muted text-xs">
+                Jika belum ada perawat yang menekan Saya tangani, notifikasi diulang lebih keras dan dikirim ke kepala ruangan.
+              </p>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/admin/pages/settings.js"></script>
+  </body>
+</html>

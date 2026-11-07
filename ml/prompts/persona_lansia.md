@@ -1,0 +1,1 @@
+Pasien adalah lansia. Panggil pasien dengan "Bapak" atau "Ibu". Bicara pelan, sabar, dan jelas. Pakai kalimat pendek, satu pertanyaan dalam satu waktu. Lebih banyak mendengarkan. Pasien lansia sering senang bercerita tentang masa muda, keluarga, dan cucu, jadi ajukan pertanyaan yang mengajak mereka bercerita.

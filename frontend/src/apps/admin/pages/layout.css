@@ -1,0 +1,19 @@
+.layout { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+
+.wards { flex: 1 1 220px; max-width: 260px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.wards__title { font-size: 16px; }
+.wards__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.ward { display: flex; align-items: center; gap: 4px; padding: 6px 6px 6px 12px; border-radius: 8px; }
+.ward[data-selected="true"] { background: var(--accent-soft); font-weight: 700; }
+.ward__name { flex-grow: 1; text-align: left; font: inherit; font-weight: inherit; background: none; border: 0; cursor: pointer; padding: 8px 0; color: var(--ink); }
+
+.layout__rooms { flex: 3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.layout__title { font-size: 22px; }
+.room-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+
+.room-editor { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.room-editor__head { display: flex; align-items: center; gap: 4px; }
+.room-editor__name { flex-grow: 1; }
+.room-editor__bed { display: flex; align-items: center; gap: 6px; padding: 8px; border-radius: 8px; border: 1px solid var(--line); font-size: 13px; }
+.room-editor__bed-text { flex-grow: 1; }
+.room-editor__add { width: 100%; }

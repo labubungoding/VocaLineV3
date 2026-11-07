@@ -1,0 +1,66 @@
+ekspresi:
+  senang:   {pitch: 1.15, rate: 1.05}
+  antusias: {pitch: 1.25, rate: 1.10}
+  empati:   {pitch: 0.95, rate: 0.90}
+  tenang:   {pitch: 0.95, rate: 0.92}
+  bercanda: {pitch: 1.20, rate: 1.08}
+  serius:   {pitch: 0.85, rate: 0.95}
+  netral:   {pitch: 1.00, rate: 1.00}
+
+persona:
+  remaja: {pitch: 0.05, rate: 1.00}
+  dewasa: {pitch: 0.00, rate: 1.00}
+  lansia: {pitch: -0.05, rate: 0.95}
+
+batas:
+  rate: {min: 0.5, maks: 2.0}
+  pitch: {min: 0.0, maks: 2.0}
+
+vad:
+
+  diam_selesai_ms: {remaja: 1000, dewasa: 1200, lansia: 1600}
+
+  diam_manual_ms: {min: 300, maks: 3000, langkah: 100}
+
+  min_bicara_ms: 400
+
+  pad_awal_ms: 300
+
+  ambang_bicara: 0.5
+
+  selisih_ambang_diam: 0.15
+  ambang_diam_min: 0.05
+
+  barge_in_ms: 300
+  ambang_barge_in: 0.8
+
+  laju_sampel_hz: 16000
+
+filler:
+  filler_ms: 700
+  ekspresi: netral
+  kalimat:
+    remaja: ["Hmm...", "Oke, oke...", "Bentar ya..."]
+    dewasa: ["Hmm...", "Baik, {sapaan}...", "Sebentar ya..."]
+    lansia: ["Hmm...", "Iya, {sapaan}...", "Sebentar ya, {sapaan}..."]
+
+mesin_suara:
+
+  jeda_setelah_batal_ms: 350
+
+  batas_macet_ms: 5000
+
+  periksa_ms: 100
+
+perintah_suara:
+  volume_awal: 1.0
+  volume_langkah: 0.3
+  volume_min: 0.2
+  volume_maks: 1.0
+  kecepatan_awal: 1.0
+  kecepatan_langkah: 0.15
+  kecepatan_min: 0.6
+
+rekaman:
+
+  min_ukuran_byte: 2000

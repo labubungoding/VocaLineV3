@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f6e74" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/auth/pages/forbidden.css" />
+    <title>VocalLine</title>
+  </head>
+  <body>
+    <div id="not-found" class="forbidden" hidden>
+      <span class="mono forbidden__code">404</span>
+      <h1 class="forbidden__title">Halaman tidak ditemukan</h1>
+      <p class="muted forbidden__text">Alamat yang Anda buka tidak ada. Periksa lagi tautannya.</p>
+      <div class="forbidden__actions">
+        <button id="app-btn-go-home" type="button" class="btn btn--primary">Kembali ke beranda</button>
+        <button id="app-btn-logout-403" type="button" class="btn btn--ghost" hidden>Logout</button>
+      </div>
+    </div>
+    <script type="module" src="/src/apps/auth/pages/home.js"></script>
+  </body>
+</html>

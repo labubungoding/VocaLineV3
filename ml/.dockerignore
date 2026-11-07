@@ -1,0 +1,11 @@
+.venv
+venv
+.env
+__pycache__
+**/__pycache__
+notebooks
+training
+data/stt_test
+tests
+models
+*.ipynb

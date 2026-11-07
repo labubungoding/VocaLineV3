@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d4fb8" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/admin/admin.css" />
+    <link rel="stylesheet" href="/src/apps/admin/pages/setup.css" />
+    <title>Pemasangan · Superadmin</title>
+  </head>
+  <body>
+    <div class="app-shell theme-admin">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <div class="setup">
+            <h1 class="page-title">Pemasangan pertama</h1>
+            <p id="sa-setup-done" class="alert alert--ok" hidden>Sistem sudah ditandai siap dipakai.</p>
+
+            <ol id="sa-setup-stepper" class="stepper">
+              <li data-step="1"><button type="button" class="stepper__btn" data-goto="1"><span class="mono stepper__num">Langkah 1</span><div class="stepper__label">Denah</div></button></li>
+              <li data-step="2"><button type="button" class="stepper__btn" data-goto="2"><span class="mono stepper__num">Langkah 2</span><div class="stepper__label">Akun perawat</div></button></li>
+              <li data-step="3"><button type="button" class="stepper__btn" data-goto="3"><span class="mono stepper__num">Langkah 3</span><div class="stepper__label">Pemasangan tablet oleh perawat</div></button></li>
+            </ol>
+
+            <section id="sa-setup-step-layout" class="card setup__step" data-panel="1" hidden>
+              <h2 class="setup__title">Langkah 1 · Buat bangsal, kamar, dan kasur</h2>
+              <p class="muted">
+                Untuk demo lomba cukup 1 bangsal dengan 4–6 kamar. Saat ini:
+                <span data-count="wards">0</span> bangsal, <span data-count="rooms">0</span> kamar, <span data-count="beds">0</span> kasur.
+              </p>
+              <a id="sa-btn-goto-layout" href="/admin/layout" class="btn setup__link">Buka halaman Denah</a>
+            </section>
+
+            <section id="sa-setup-step-nurses" class="card setup__step" data-panel="2" hidden>
+              <h2 class="setup__title">Langkah 2 · Buat akun perawat</h2>
+              <p class="muted"><span data-count="nurses">0</span> akun perawat aktif.</p>
+              <a id="sa-btn-goto-nurses" href="/admin/nurses" class="btn setup__link">Buka halaman Akun perawat</a>
+            </section>
+
+            <section id="sa-setup-step-pairing" class="card setup__step" data-panel="3">
+              <h2 class="setup__title">Langkah 3 · Pendaftaran &amp; pemasangan tablet oleh perawat</h2>
+              <p class="muted">
+                Perawat memindai QR di layar tablet untuk mendaftarkan sekaligus memasangkannya ke kasur, lalu menguji mikrofon,
+                speaker, dan alarm dari dashboard. Halaman ini hanya memantau.
+              </p>
+              <div id="sa-pairing-progress" class="progress">
+                <span class="progress__track"><span class="progress__bar"></span></span>
+                <b id="sa-pairing-progress-text"></b>
+              </div>
+              <div id="sa-pairing-rows" class="pairing-rows"></div>
+            </section>
+
+            <div class="setup__nav">
+              <button id="sa-btn-setup-prev" type="button" class="btn">Sebelumnya</button>
+              <div class="setup__nav-right">
+                <button id="sa-btn-setup-next" type="button" class="btn btn--primary">Berikutnya</button>
+                <button id="sa-btn-setup-complete" type="button" class="btn btn--success">Tandai sistem siap</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/admin/pages/setup.js"></script>
+  </body>
+</html>

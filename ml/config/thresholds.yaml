@@ -1,0 +1,305 @@
+server:
+
+  maks_proses_bersamaan: 2
+
+audio:
+
+  maks_detik: 30
+
+stt:
+
+  prompt_awal: "Percakapan pasien rumah sakit dengan Vine. Vine on. Vine off. Infus, perawat, suster, sesak napas, dada sakit, pusing, mual, toilet, obat."
+
+  halusinasi:
+    - "terima kasih (telah|sudah|udah) menonton"
+    - "(jangan lupa )?(like|subscribe|share)"
+    - "sampai jumpa (di|pada) video"
+    - "subtitle(s)? (by|oleh)"
+    - "terjemahan oleh"
+    - "(channel|kanal) (ini|kami)"
+
+  min_keyakinan: 0.45
+
+  max_no_speech: 0.6
+
+  sisa_hening_ms: 200
+
+groq_stt:
+  model: "whisper-large-v3-turbo"
+  maks_per_menit: 20
+  maks_per_hari: 2000
+  jeda_setelah_kuota_habis_detik: 60
+  batas_waktu_detik: 10
+
+groq_llm:
+  maks_per_menit: 30
+  maks_per_hari: 1000
+  jeda_setelah_kuota_habis_detik: 60
+  batas_waktu_detik: 8
+
+  maks_token: 1024
+  suhu: 0.7
+
+llm:
+
+  batas_waktu_total_detik: 12
+
+streaming:
+
+  min_kata_kalimat: 3
+
+intent:
+
+  ambang_darurat: 0.30
+
+tanya_ulang:
+  maksimal: 2
+
+emosi:
+
+  ambang:
+    indobert: 0.6
+    pembanding: 0.45
+    kata_kunci: 0.6
+
+  jendela_perataan: 3
+
+  ambang_langsung: 0.75
+
+  suara:
+    aktif: true
+    min_ucapan_patokan: 2
+    alfa_patokan: 0.3
+    bobot: 0.85
+    min_kekuatan: 0.5
+    abaikan_jika_teks_lain: 0.75
+    marah: {keras_mulai_db: 4, keras_penuh_db: 10, nada_mulai_st: 2, nada_penuh_st: 5}
+    sedih: {pelan_mulai_db: 4, pelan_penuh_db: 10, rendah_mulai_st: 1.5, rendah_penuh_st: 4}
+  kata_kunci:
+    bobot: 0.75
+    marah:
+      - "kesal|kesel|sebel|sebal|marah|jengkel|dongkol|geram|muak|benci|ngeselin|nyebelin|menyebalkan|keterlaluan"
+      - "emosi|bete|sewot|ngamuk|murka|kurang ajar|sialan|brengsek|nyebelin banget"
+    sedih:
+      - "sedih|kangen|rindu|kesepian|sendirian|nangis|menangis|galau|hampa|murung|pilu|nelangsa|berduka|kehilangan"
+      - "takut|khawatir|kuatir|cemas|gelisah|patah hati|sakit hati|kecewa|putus asa|merana|terpuruk|down"
+    ceria:
+      - "senang|seneng|bahagia|gembira|asik|asyik|seru|lega|bersyukur|syukur|alhamdulillah|lucu|haha\\w*|hehe\\w*|wkwk\\w*"
+      - "mantap|keren|hore|horee|yey|yeay|semangat|terima kasih banyak|makasih banyak|happy"
+
+tts:
+
+  kecepatan:
+    remaja: 1.05
+    dewasa: 1.0
+    lansia: 0.85
+
+gemini:
+
+  maks_per_menit: 10
+  maks_per_hari: 20
+
+  jeda_setelah_kuota_habis_detik: 60
+
+  batas_waktu_token_pertama_detik: 15
+  batas_waktu_total_detik: 15
+
+  ulang_ke_model_cadangan: 1
+
+  matikan_thinking: true
+  maks_token_jika_berpikir: 1024
+
+percakapan:
+
+  riwayat_maksimal: 6
+
+  riwayat_maks_kata: 20
+
+  fakta_maksimal: 5
+
+  sesi_kedaluwarsa_jam: 12
+
+  jumlah_contoh: 0
+
+topik:
+  aktif: true
+
+  model_dir: models/topik-minilm
+
+  ambang:
+    minilm: 0.27
+    indobert: 0.33
+  maks_topik_lama: 3
+
+  maks_giliran: 4
+  ringkasan_maks_kata: 12
+
+  kata_pendek: 3
+
+  maks_kata_rujukan: 8
+  pola_rujukan: "^(iya|iyaa|terus|trus|lalu|lantas|itu|tersebut|begitu|gitu|betul|benar|oh|oke|hmm)\\b|\\b(dia|beliau|mereka)\\b"
+
+konteks_alarm:
+  aktif: true
+
+  pemicu:
+    napas: "\\b(sesak|napas|nafas|bernapas|bernafas|engap|ngos ngosan|megap megap)(nya)?\\b"
+    dada: "\\b(dada|jantung|jantungan|berdebar|deg ?degan)(nya)?\\b"
+    pingsan: "\\b(pingsan|semaput|ambruk|tidak sadar|nggak sadar|gak sadar|ga sadar)(nya)?\\b"
+    kejang: "\\bkejang\\w*"
+    darah: "\\b(darah\\w*|berdarah|pendarahan|perdarahan|mimisan)\\b"
+    jatuh: "\\b(jatuh|terjatuh|terpeleset|kepeleset|terbentur)(nya)?\\b"
+    sakit: "\\b(sakit\\w*|nyeri\\w*|perih|ngilu|mules|kram|bengkak|memar|lebam|gatal)\\b"
+    pusing: "\\b(pusing|kliyengan|vertigo|berkunang|pandangan( saya)? kabur)(nya)?\\b"
+    mual: "\\b(mual\\w*|muntah\\w*)\\b"
+    demam: "\\b(demam\\w*|meriang|menggigil|kedinginan|panas tinggi)\\b"
+    lemas: "\\b(lemas|lemes|kebas|kesemutan|mati rasa|lumpuh|mencong|perot|keringat dingin|kaku kaku|mendelik|(tidak|nggak|gak|ga) bisa (digerakkan|digerakin|gerak|bangun))(nya)?\\b"
+    infus: "\\b(infus\\w*|kateter|selang)\\b"
+    toilet: "\\b(toilet|pipis|buang air|bab|bak)\\b"
+    tolong: "\\b(tolong|bantu|bantuin)\\b"
+    takut: "\\b(takut|cemas|panik)\\b"
+    mati: "\\b(mati|meninggal)\\b"
+
+  berat: [napas, dada, pingsan, kejang, darah, jatuh]
+
+  perasaan: [takut]
+
+  langsung:
+    bunuh_diri:
+      - "\\bbunuh diri\\b"
+      - "\\b(ingin|mau|pengen|pingin|kepengen) mati\\b(?! (bosan|kebosanan|ketawa|tertawa|penasaran|kelaparan|kepanasan|kedinginan|gaya))"
+      - "\\bmati (saja|aja)\\b"
+      - "\\b(capek|cape|capai|lelah) hidup\\b"
+      - "\\bmengakhiri (hidup|semua|semuanya|nyawa)\\b"
+      - "\\b(ga|gak|nggak|tidak|tak|enggak) (mau|ingin|pengen) hidup\\b"
+      - "\\b(mending|lebih baik) (saya|aku) (ga|gak|nggak|tidak|enggak) (ada|hidup)\\b"
+      - "\\b(menyakiti|melukai|lukai|sakiti) diri\\b"
+    permintaan:
+      - pola: "\\bpanggil(kan|in)? (suster|perawat|dokter|ners)\\b"
+        kecuali: "\\b(tidak|nggak|gak|ga|enggak|jangan) (usah |perlu )?panggil"
+      - pola: "\\btolong (saya|aku)\\b"
+        kecuali: "\\btolong (saya|aku) (di)?(ambilkan|bacakan|ceritakan|temani|nyalakan|matikan|kecilkan|besarkan|putarkan|carikan|ulangi)\\b"
+      - "\\btolong tolong\\b"
+      - "\\b(suster|perawat|dokter|sus) (tolong|ke sini|kesini|sini)\\b"
+      - "\\btolong\\b.*\\b(cepat|cepetan|darurat|segera)\\b"
+
+  kiasan:
+    - "\\b(mau |hampir |sampai |bisa )?mati (bosan|kebosanan|ketawa|tertawa|penasaran|gaya|kutu|kelaparan|kepanasan|kedinginan)\\b"
+    - "\\bmati (lampu|listrik)\\b|\\b(lampu|listrik|hp|handphone|ponsel|tv|televisi|kipas|ac|baterai|batre|mesin|motor|mobil|jam)( \\w+){0,2} mati\\b"
+    - "\\b(sakit|patah) hati\\b"
+    - "\\bjatuh (cinta|hati|tempo|miskin|bangkrut)\\b"
+    - "\\b(pusing|pening|sakit kepala)( \\w+)? (mikirin|memikirkan|mikir|ngurusin|ngurus|dengerin)\\b"
+    - "\\b(bernapas|bernafas|napas|nafas)( \\w+){0,2} (lega|plong)\\b"
+    - "\\bjantungan\\b"
+    - "\\bdada( \\w+){0,2} (plong|lega|hangat|bangga)\\b"
+    - "\\b(pingsan|semaput) (ketawa|tertawa|kegirangan)\\b"
+    - "\\b(jantung( saya| aku)? )?deg ?degan( \\w+){0,4} (nonton|pertandingan|penalti|ketemu|lamaran)\\b"
+    - "\\btolong (temani|temenin|bacakan|dibacakan|ceritakan|nyalakan|matikan|kecilkan|besarkan|keraskan|putarkan|putar|ulangi|carikan)\\b"
+    - "\\brumah sakit\\b"
+    - "\\b(cek|tes|periksa|ambil|hasil|golongan|donor|transfusi) (lab )?darah\\b|\\bdarah tinggi\\b|\\btekanan darah\\b"
+  masa_lalu: "\\b(dulu|dahulu|dulunya|pernah|waktu itu|kemarin dulu|tahun lalu|bulan lalu|minggu lalu|tahun kemarin|waktu (kecil|muda|masih|sd|smp|sma|kuliah|perang)|masa (kecil|muda)|zaman|semasa|sewaktu)\\b"
+
+  bukan_masa_lalu: "\\b(kayak|seperti|sama kayak|sama seperti|kaya) dulu\\b|\\b(belum|tidak|nggak|gak) pernah\\b"
+
+  sekarang: "\\b(sekarang|saat ini|barusan|baru saja|baru aja|dari tadi|sejak tadi|tiba tiba|mendadak|separah ini|seperti ini|kayak gini|begini)\\b"
+  orang_lain: "\\b(anak|istri|suami|cucu|teman|temen|tetangga|ibu|bapak|ayah|mama|papa|emak|kakak|adik|abang|keponakan|mertua|menantu|saudara|sepupu|kawan|sahabat|pacar|om|tante|paman|bibi|nenek|kakek|bos|atasan|murid)( \\w+)? (saya|aku|gue|gw|kami|kita)\\b|\\b(anakku|istriku|suamiku|cucuku|temanku|ibuku|bapakku|ayahku|kakakku|adikku|almarhum|almarhumah|mendiang|beliau)\\b"
+
+  jauh: "\\bdi (rumah(?! sakit)|kampung|desa|luar kota|kota lain|sana|kantor|sekolah|jakarta|bandung|surabaya|medan|jogja|semarang)\\b|\\b(katanya|kabarnya)\\b"
+  cerita: "\\b(di|dalam) (film|sinetron|drama|berita|koran|tv|televisi|video|youtube|tiktok|novel|komik|game|cerita)\\b|\\b(ber)?mimpi\\w*\\b|\\b(katanya|kabarnya|dengar dengar|ceritanya)\\b|\\b(film|sinetron|berita|novel|video|drama)(nya)? (tentang|soal|yang|itu|bilang|tadi)\\b|\\bnonton (film|sinetron|berita|video|drama)\\b|\\bbaca (berita|koran|novel|buku|cerita)\\b"
+  penyangkalan:
+    kata: "\\b(tidak|nggak|ngga|enggak|engga|gak|ga|tak|ndak|bukan)\\b"
+
+    bukan: "^(bisa|kuat|tahan|enak|sadar|berhenti|mau berhenti|bangun|lancar|bisa bisa)\\b"
+    pulih: "\\b(sudah|udah|sdh) (membaik|baikan|mendingan|enakan|sembuh|hilang|reda|turun|berkurang|kering|lancar|sehat|dibetulkan|diganti|normal)\\b|\\b(hilang|reda|membaik|sembuh|berkurang)\\b"
+
+  ragu:
+    sebab_perasaan: "\\b(mikirin|memikirkan|kepikiran|mikir|dengar kabar|dengar berita|denger kabar|nangis|menangis|kangen|rindu|sedih|stres|stress)\\b"
+    tidak_pasti: "\\b(kayaknya|kayanya|sepertinya|mungkin|agak|sedikit|kadang|kadang kadang|sesekali|sering|kalau|kalo|takut nanti|takut kalau|takut kalo|khawatir|rasanya mau)\\b"
+
+    penguat: "\\b(sekali|banget|parah|sangat|hebat|tidak tahan|nggak tahan|nggak kuat|tidak kuat|makin)\\b"
+  bagian_tubuh: "\\b(kepala|dada|perut|jantung|tangan|kaki|lengan|punggung|pinggang|leher|mata|telinga|mulut|bibir|wajah|muka|pipi|badan|tubuh|luka|jahitan|bekas operasi|napas|nafas|kulit|lutut|paha|gigi|tenggorokan|infus|kateter|selang)\\b"
+
+  jangan_turunkan: "\\b(putus asa|percuma|menyerah|tidak ada harapan|nggak ada harapan|jadi beban|membebani|tidak berguna|nggak berguna|tidak berharga|tidak sanggup lagi|nggak sanggup lagi|sudah tidak kuat hidup)\\b"
+
+  emosi_penguat: [sedih, marah]
+  topik_penguat: "\\b(kangen|rindu|sedih|kesepian|sepi|bosan|kesal|marah|kecewa|anak|istri|suami|cucu|keluarga|ibu|bapak|ayah|almarhum\\w*|dulu|kenangan|muda|kecil|kampung)\\b"
+  konfirmasi:
+    berlaku_giliran: 2
+    ya: "^(iya|ya|iyah|iyaa|yah|betul|benar|bener|he ?eh|heeh|hmm iya|masih|terasa|agak|sedikit|lumayan|kayaknya iya|sepertinya iya)\\b"
+    tidak: "^(tidak|nggak|ngga|enggak|engga|gak|ga|ndak|nda|bukan|belum)\\b|\\b(sudah|udah) (tidak|nggak|gak|enggak|hilang|mendingan|membaik|baikan|enakan)\\b|\\b(cuma|hanya) (kepikiran|perasaan|pikiran|bercanda|capek|kangen)\\b"
+
+kenaikan_level:
+  maksud_terkunci: ["pertanyaan_medis", "ngobrol"]
+
+  gejala_harus_di_ucapan: true
+  pola_gejala: "\\b(sakit|nyeri|sesak|napas|nafas|dada|pusing|mual|muntah|demam|panas tinggi|darah|berdarah|jatuh|pingsan|kejang|lemas|kebas|mati rasa|lumpuh|bengkak|infus|bunuh diri|ingin mati|mau mati|menyakiti diri|putus asa|tidak sadar)(nya|ku|mu)?\\b"
+
+penurun_level:
+  aktif: true
+  pola_keluhan:
+    - "\\b(kesal|kesel|sebel|sebal|bete|bosan|bosen|jenuh|marah|jengkel|ngambek|kecewa|nyebelin|menyebalkan|males|malas|bandel|jutek|judes|cerewet|berisik|ribut|bising|lemot|rusak|retak|kotor|jijik|sempit|hambar|keras|gerah|kepanasan|sedih|kangen|rindu|kesepian)\\b"
+
+    - "\\b(muak|emosi|benci|dongkol|geram|sewot|galau|stres|stress|frustasi|frustrasi|sumpek|suntuk|sepi|sendirian|nangis|menangis|takut|khawatir|kuatir|cemas|gelisah)\\b"
+    - "\\b(senang|seneng|bahagia|gembira|lega|lucu|haha\\w*|hehe\\w*|wkwk\\w*|alhamdulillah|bersyukur|syukur|asik|asyik|seru|mantap|keren|happy)\\b"
+    - "\\b(nggak|tidak|gak|ga|enggak) (suka|enak|betah|dingin|datang|jenguk|telepon|dengerin)\\b"
+    - "\\b(nggak|tidak|gak|ga|enggak) ada (yang|orang) (datang|jenguk|dengerin|peduli|nemenin|nengok|telepon|ngajak)\\b"
+    - "\\blama (banget|sekali|amat)\\b|\\bkok lama\\b"
+    - "\\bcapek (banget |deh |sekali )?(nunggu|nungguin|menunggu|antri|antre|ngantri|ditanya)"
+    - "\\b(mati gaya|sakit hati)\\b"
+  pola_bahaya:
+
+    - "\\b(ke)?sakit(an|nya)?\\b|\\b(nyeri|sesak|napas|nafas|bernapas|bernafas|pusing|mual|muntah|demam|meriang|panas tinggi|darah|berdarah|jatuh|pingsan|semaput|kejang|lemas|lemes|kebas|mati rasa|lumpuh|bengkak|infus|gatal|perih|ngilu|kram|keringat dingin|gemetar|menggigil|berdebar|deg degan)(nya|ku|mu)?\\b"
+
+    - "\\b(kepala|perut|dada|badan|tangan|kaki|mata|telinga|leher|punggung|pinggang|jantung|luka|jahitan|operasi|kateter|selang)(nya|ku|mu)?\\b"
+
+    - "\\b(tolong|darurat|bunuh diri|nggak kuat|tidak kuat|gak kuat|ga kuat|putus asa|menyerah|capek hidup|lelah hidup|menyakiti|nggak sadar|tidak sadar)\\b|\\b(ingin|mau|pengen) mati\\b|\\bmati (saja|aja)\\b|\\bmati\\b|\\b(nggak|tidak|gak|ga) berguna\\b|\\b(beban|nyusahin) (keluarga|semua orang|orang lain)\\b"
+
+    - "\\b(panggil|panggilkan|bantu|bantuin|ambilkan|minta|mohon|toilet|pipis|buang air|bab|bak)\\b"
+
+  abaikan:
+    - "\\brumah sakit(nya)?\\b|\\bsakit hati(nya)?\\b|\\bmati gaya\\b"
+    - &barang_jatuh "\\b(selimut|bantal|guling|remote|hp|handphone|gelas|sendok|garpu|kacamata|botol|tas|charger|piring|buku|koran|barang|tisu|sandal|kaos kaki)\\b(\\s+\\w+){0,2}\\s+jatuh\\b"
+
+koneksi:
+
+  pemanasan_saat_startup: true
+  batas_waktu_pemanasan_detik: 8
+
+  keepalive_detik: 120
+
+kata_darurat:
+  merah:
+    - "\\bdada(nya|ku)?\\b.*\\b(sakit|nyeri|sesak|perih|panas|berat)\\b"
+    - "\\b(sakit|nyeri|sesak)\\b.*\\bdada(nya|ku)?\\b"
+    - "\\b(sesak|susah|sulit|ga bisa|gak bisa|nggak bisa|tidak bisa)\\b.*\\b(napas|nafas|bernapas|bernafas)(nya|ku)?\\b"
+    - "\\bsesak\\b"
+    - pola: "\\bjatuh\\b"
+
+      kecuali: [*barang_jatuh, "\\bjatuh (cinta|tempo|sakit)\\b"]
+    - pola: "\\b(berdarah|pendarahan|perdarahan)\\b"
+      kecuali: "\\bdemam berdarah\\b"
+
+    - pola: "\\b(batuk|muntah|berak|bab|kencing|pipis|ludah|ngocor|mengucur|muncrat|keluar|mengalir|netes|menetes)\\b.*\\bdarah\\w*|\\bdarah\\w*\\b.*\\b(keluar|ngocor|mengucur|muncrat|mengalir|banyak|terus|netes|menetes)\\b"
+      kecuali: "\\b(cek|tes|ambil|diambil|hasil|gula|tekanan|transfusi|golongan|donor) darah\\b"
+    - "\\b(pingsan|kejang|mau pingsan)\\b"
+    - "\\bbunuh diri\\b"
+    - "\\b(pengen|ingin|mau) mati\\b"
+    - "\\bcapek hidup\\b|\\bcape hidup\\b|\\blelah hidup\\b"
+    - "\\bmengakhiri hidup\\b"
+    - "\\b(ga|gak|nggak|tidak) (mau|ingin|pengen) hidup\\b"
+    - "\\bmending (saya|aku) (ga|gak|nggak|tidak) ada\\b"
+    - "\\btolong\\b.*\\b(cepat|cepetan|darurat)\\b"
+    - "\\btolong tolong\\b"
+    - "\\b(semaput|ambruk|tidak sadarkan diri)\\b"
+    - "\\b(dia|ayah|ibu|bapak|mama|papa|anak|istri|suami|kakek|nenek|pasien)\\b.*\\b(nggak|tidak|gak|ga) sadar\\b"
+    - "\\b(tangan|kaki|badan|separuh|sebelah|muka|wajah)\\b.*\\b(nggak bisa|tidak bisa|ga bisa|gak bisa) (digerakin|digerakkan|gerak)\\b"
+    - "\\b(tiba tiba|mendadak)\\b.*\\b(lemas|lumpuh|kebas|mati rasa)\\b"
+    - "\\b(mulut|bibir|muka|wajah)\\b.*\\b(mencong|miring|perot)\\b"
+    - "\\b(kaku kaku|mendelik)\\b"
+
+  oranye:
+    - "\\binfus(nya|ku)?\\b.*\\b(habis|macet|copot|lepas|berdarah|bengkak)\\b"
+    - "\\b(mau|pengen|ingin) (ke )?(toilet|kamar mandi|pipis|buang air|bab|bak)\\b"
+    - "\\b(mual|muntah)\\b"
+    - "\\bnyeri\\b"
+    - "\\bpanggil(kan)? (perawat|suster|dokter)\\b"

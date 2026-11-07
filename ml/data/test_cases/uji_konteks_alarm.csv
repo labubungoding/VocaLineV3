@@ -1,0 +1,171 @@
+teks,harapan,pemicu,konteks
+aduh saya mau mati bosan di sini,hijau,mati,kiasan
+saya sakit hati sama omongan anak saya,hijau,sakit,kiasan
+cucu saya lagi jatuh cinta sama teman sekolahnya,hijau,jatuh,kiasan
+saya pusing mikirin biaya rumah sakit,hijau,pusing,kiasan
+pusing saya mikirin cicilan rumah yang belum lunas,hijau,pusing,kiasan
+akhirnya saya bisa bernapas lega setelah dokter bilang boleh pulang,hijau,napas,kiasan
+napas lega rasanya hasil lab saya bagus,hijau,napas,kiasan
+sinetronnya bikin saya mati penasaran,hijau,mati,kiasan
+lucu banget sampai saya mati ketawa,hijau,mati,kiasan
+jatuh cinta lagi saya sama lagu lama ini,hijau,jatuh,kiasan
+harga cabai sekarang bikin jantungan,hijau,dada,kiasan
+dada saya rasanya plong setelah cerita ke kamu,hijau,dada,kiasan
+saya takut kalau nanti tidak bisa kerja lagi,hijau,takut,kiasan
+saya takut sama jarum suntik dari kecil,hijau,takut,kiasan
+saya hampir pingsan ketawa dengar cerita cucu,hijau,pingsan,kiasan
+lagu ini bikin saya jatuh hati,hijau,jatuh,kiasan
+kemarin nonton bola jantung saya deg degan waktu adu penalti,hijau,dada,kiasan
+hp saya mati dari tadi lupa dicas,hijau,mati,kiasan
+tolong temani saya ngobrol sebentar ya,hijau,tolong,kiasan
+saya takut sendirian di kamar ini sepi sekali,hijau,takut,kiasan
+dulu saya pernah jatuh dari pohon mangga waktu kecil,hijau,jatuh,masa_lalu
+waktu muda saya pernah pingsan pas upacara bendera,hijau,pingsan,masa_lalu
+tahun lalu saya dirawat karena sesak sekarang sudah sehat,hijau,napas,masa_lalu
+kemarin dulu saya sempat pusing tapi sudah hilang,hijau,pusing,masa_lalu
+dulu waktu operasi pertama darahnya banyak sekali,hijau,darah,masa_lalu
+waktu itu infus saya pernah macet tapi susternya cepat datang,hijau,infus,masa_lalu
+dulu saya sering mual kalau naik bus,hijau,mual,masa_lalu
+pernah dulu saya kejang waktu demam tinggi masih kecil,hijau,kejang,masa_lalu
+dulu ayah saya meninggal karena serangan jantung,hijau,dada,masa_lalu
+tahun lalu tetangga saya jatuh dari tangga,hijau,jatuh,masa_lalu
+dulu saya perawat juga sering lihat pasien sesak,hijau,napas,masa_lalu
+waktu kecil saya sering mimisan berdarah kalau kecapekan,hijau,darah,masa_lalu
+istri saya di rumah lagi demam katanya,hijau,demam,orang_lain
+anak saya kemarin dulu masuk rumah sakit karena sesak,hijau,napas,orang_lain
+cucu saya suka pusing kalau main hp kelamaan,hijau,pusing,orang_lain
+teman saya sakit perut habis makan sambal,hijau,sakit,orang_lain
+suami saya di kampung jatuh dari motor tapi sudah baikan,hijau,jatuh,orang_lain
+tetangga saya juga lagi dirawat katanya darah tinggi,hijau,darah,orang_lain
+adik saya takut sekali sama dokter gigi,hijau,takut,orang_lain
+kakak saya baru operasi jantung bulan lalu,hijau,dada,orang_lain
+ibu saya dulu sering sesak kalau musim hujan,hijau,napas,orang_lain
+saya kangen almarhumah istri beliau meninggal karena sakit,hijau,sakit,orang_lain
+anak saya bilang dia pusing mikirin kuliahnya,hijau,pusing,orang_lain
+semalam saya mimpi jatuh dari tebing kaget sekali,hijau,jatuh,cerita
+di sinetron tadi ada yang pingsan di pernikahan,hijau,pingsan,cerita
+saya nonton film perang banyak yang berdarah,hijau,darah,cerita
+berita tadi bilang ada orang jatuh dari jembatan,hijau,jatuh,cerita
+di film itu pemainnya kejang kejang kena racun,hijau,kejang,cerita
+saya baca berita ada yang sesak napas karena asap kebakaran,hijau,napas,cerita
+katanya di novel itu tokohnya mati di akhir cerita,hijau,mati,cerita
+semalam saya mimpi tenggelam dan tidak bisa napas,hijau,napas,cerita
+di youtube ada video orang pingsan waktu lari maraton,hijau,pingsan,cerita
+di tv ada berita orang tertabrak sampai berdarah,hijau,darah,cerita
+sekarang sudah tidak sesak lagi kok,hijau,napas,penyangkalan
+kepala saya sudah tidak pusing sudah membaik,hijau,pusing,penyangkalan
+alhamdulillah dada saya sudah tidak sakit,hijau,dada,penyangkalan
+mualnya sudah hilang setelah makan tadi,hijau,mual,penyangkalan
+saya nggak apa apa nggak sakit kok,hijau,sakit,penyangkalan
+luka jahitan saya sudah kering sudah tidak berdarah,hijau,darah,penyangkalan
+demamnya sudah turun dari semalam,hijau,demam,penyangkalan
+saya sudah bisa jalan sendiri tidak takut jatuh lagi,hijau,jatuh,penyangkalan
+nyerinya sudah berkurang banyak terima kasih,hijau,sakit,penyangkalan
+infusnya sudah dibetulkan suster sudah lancar lagi,hijau,infus,penyangkalan
+dada saya sakit sekali,naik,dada,
+napas saya sesak dari tadi,naik,napas,
+saya susah bernapas,naik,napas,
+saya jatuh di kamar mandi barusan,naik,jatuh,
+kepala saya pusing sekali berputar putar,naik,pusing,
+perut saya nyeri banget,naik,sakit,
+saya mual dan mau muntah,naik,mual,
+infus saya macet darahnya naik ke selang,naik,infus,
+infusnya copot,naik,infus,
+tangan saya berdarah kena jarum,naik,darah,
+saya mau pingsan,naik,pingsan,
+badan saya lemas sekali tidak bisa bangun,naik,lemas,
+tangan kiri saya tiba tiba kebas,naik,lemas,
+saya mau ke toilet tolong bantu,naik,toilet,
+luka jahitan saya berdarah lagi,naik,darah,
+saya demam badan saya menggigil,naik,demam,
+jantung saya berdebar kencang sekali,naik,dada,
+dulu tidak pernah begini tapi sekarang dada saya nyeri,naik,dada,
+kemarin dulu sudah sembuh tapi sekarang sesak lagi,naik,napas,
+anak saya tadi pulang sekarang kepala saya sakit sekali,naik,sakit,
+saya habis jatuh dari tempat tidur,naik,jatuh,
+kaki saya sakit sekali tidak bisa digerakkan,naik,sakit,
+saya batuk darah,naik,darah,
+perut saya perih sekali dari pagi,naik,sakit,
+kepala saya sakit sekali mau pecah,naik,sakit,
+saya pusing pandangan saya kabur,naik,pusing,
+saya muntah terus dari tadi,naik,mual,
+napas saya bunyi ngik ngik dan berat,naik,napas,
+dada saya rasanya ditekan benda berat,naik,dada,
+istri saya pingsan di sini,naik,pingsan,
+bapak di kasur sebelah kejang kejang,naik,kejang,
+saya takut sekali dada saya berdebar dan keringat dingin,naik,dada,
+mulut saya mencong sebelah,naik,lemas,
+saya kedinginan dan menggigil terus,naik,demam,
+bekas operasi saya nyeri sekali,naik,sakit,
+saya tidak bisa pipis dari pagi,naik,toilet,
+saya sesak susah ngomong,naik,napas,
+kepala saya terbentur waktu jatuh tadi,naik,jatuh,
+saya keringat dingin dan lemas,naik,lemas,
+selang kateter saya lepas,naik,infus,
+saya merasa sangat pusing dan mau jatuh,naik,pusing,
+sakit di dada kiri saya menjalar ke lengan,naik,dada,
+dada saya sesak mikirin biaya rumah sakit,tanya,napas,
+kangen istri sampai dada saya rasanya sesak,tanya,napas,
+rasanya mau pingsan dengar kabar itu,tanya,pingsan,
+kadang kadang saya agak sesak kalau malam,tanya,napas,
+kayaknya kepala saya agak pusing,tanya,pusing,
+saya takut nanti sesak lagi kayak dulu,tanya,napas,
+jantung saya deg degan terus mikirin hasil lab,tanya,dada,
+perut saya mules mikirin operasi besok,tanya,sakit,
+dulu saya pernah jatuh terus kepala saya sakit sekali,tanya,sakit,
+saya merasa lemas mungkin karena kurang tidur,tanya,lemas,
+sejak tadi saya agak mual mungkin karena obat,tanya,mual,
+tangan saya kesemutan kalau kelamaan nulis,tanya,lemas,
+kepala saya sering pusing kalau bangun tidur,tanya,pusing,
+kayaknya infus saya agak lambat netesnya,tanya,infus,
+saya takut jatuh kalau jalan ke toilet sendiri,tanya,jatuh,
+napas saya agak berat tapi mungkin cuma capek,tanya,napas,
+habis nangis tadi dada saya jadi sakit,tanya,dada,
+panggil suster sekarang,langsung,tolong,permintaan
+tolong panggilkan perawat perut saya sakit,langsung,tolong,permintaan
+tolong saya,langsung,tolong,permintaan
+tolong tolong,langsung,tolong,permintaan
+panggilkan dokter cepat,langsung,tolong,permintaan
+suster tolong ke sini,langsung,tolong,permintaan
+tolong saya mau jatuh,langsung,tolong,permintaan
+saya mau bunuh diri saja,langsung,bunuh_diri,bunuh_diri
+rasanya saya ingin mati saja,langsung,bunuh_diri,bunuh_diri
+lebih baik saya tidak ada di dunia ini,langsung,bunuh_diri,bunuh_diri
+saya capek hidup mau mengakhiri semuanya,langsung,bunuh_diri,bunuh_diri
+saya ingin menyakiti diri sendiri,langsung,bunuh_diri,bunuh_diri
+dulu saya pernah ingin bunuh diri,langsung,bunuh_diri,bunuh_diri
+saya sudah tidak mau hidup lagi,langsung,bunuh_diri,bunuh_diri
+mau mati aja rasanya tidak ada yang peduli,langsung,bunuh_diri,bunuh_diri
+saya sakit hati sekali dibohongi teman,hijau,sakit,kiasan
+kemarin dulu cucu saya jatuh dari sepeda,hijau,jatuh,orang_lain
+di berita ada pesawat jatuh,hijau,jatuh,cerita
+almarhum bapak saya dulu sakit jantung,hijau,dada,orang_lain
+sudah tidak mual lagi sekarang,hijau,mual,penyangkalan
+saya mimpi digigit ular sampai berdarah,hijau,darah,cerita
+anak saya demam di rumah saya kepikiran,hijau,demam,orang_lain
+pusing saya ngurusin tagihan listrik,hijau,pusing,kiasan
+tetangga saya pingsan waktu kondangan bulan lalu,hijau,pingsan,orang_lain
+film tadi bikin saya nangis tokohnya sakit kanker,hijau,sakit,cerita
+saya takut gelap dari dulu,hijau,takut,kiasan
+napas saya sudah lega sekarang,hijau,napas,kiasan
+kaki saya sudah tidak bengkak,hijau,sakit,penyangkalan
+perut saya sakit sekali dari semalam,naik,sakit,
+saya barusan terpeleset di kamar mandi,naik,jatuh,
+napas saya pendek pendek,naik,napas,
+dada kiri saya nyeri tembus ke punggung,naik,dada,
+infus saya bengkak dan sakit,naik,infus,
+saya muntah darah,naik,darah,
+kepala saya berat sekali dan mau jatuh,naik,jatuh,
+tolong infus saya habis,naik,infus,
+anak saya bilang muka saya pucat dan saya lemas,naik,lemas,
+saya tidak kuat lagi menahan sakitnya,naik,sakit,
+saya kangen keluarga tapi sekarang dada saya sesak sekali,naik,napas,
+jahitan operasi saya terbuka dan keluar darah,naik,darah,
+dulu tidak pernah sekarang tangan saya kebas semua,naik,lemas,
+badan saya panas tinggi dan menggigil,naik,demam,
+dada saya kadang nyeri kalau batuk,tanya,dada,
+kayaknya saya mau demam,tanya,demam,
+panggilkan suster dong,langsung,tolong,permintaan
+aku pengen mati aja,langsung,bunuh_diri,bunuh_diri
+saya mau mengakhiri hidup saya,langsung,bunuh_diri,bunuh_diri
+tolong saya sesak,langsung,tolong,permintaan

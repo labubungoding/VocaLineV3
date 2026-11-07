@@ -1,0 +1,7 @@
+.talk-screen { height: 100%; padding: 28px 32px; display: flex; flex-direction: column; gap: 18px; font-size: var(--pt-fs); }
+.talk-screen__offline { font-size: 16px; font-weight: 700; padding: 10px 16px; }
+
+.talk-screen__center { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+.talk-screen__caption { font-size: var(--pt-cap); max-width: 760px; text-align: center; line-height: 1.4; }
+.talk-screen__retry { padding: 10px 18px; border-radius: 12px; background: #fff; border: 1.5px dashed var(--accent); }
+.talk-screen__offer { display: flex; gap: 12px; }

@@ -1,0 +1,23 @@
+alter table public.hospital_settings    enable row level security;
+alter table public.wards                enable row level security;
+alter table public.rooms                enable row level security;
+alter table public.beds                 enable row level security;
+alter table public.profiles             enable row level security;
+alter table public.nurse_wards          enable row level security;
+alter table public.superadmin_allowlist enable row level security;
+alter table public.tablets              enable row level security;
+alter table public.tablet_tests         enable row level security;
+alter table public.patients             enable row level security;
+alter table public.patient_context      enable row level security;
+alter table public.alarms               enable row level security;
+alter table public.meal_schedules       enable row level security;
+alter table public.audit_log            enable row level security;
+alter table public.service_status       enable row level security;
+alter table public.mock_simrs_patients  enable row level security;
+alter table auth.users                  enable row level security;
+alter table auth.sessions               enable row level security;
+alter table auth.tokens                 enable row level security;
+
+revoke all on schema auth from public;
+revoke all on all tables in schema public from public;
+revoke all on all tables in schema auth from public;

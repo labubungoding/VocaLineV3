@@ -1,0 +1,5 @@
+.nurses__toolbar { display: flex; gap: 12px; flex-wrap: wrap; }
+.nurses__search { flex: 1 1 260px; width: auto; }
+.nurses__table { min-width: 680px; }
+.nurse-row[data-active="false"] { opacity: 0.55; }
+.nurse-row__actions { display: inline-flex; gap: 6px; flex-wrap: wrap; }

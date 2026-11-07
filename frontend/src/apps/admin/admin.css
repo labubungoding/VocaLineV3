@@ -1,0 +1,14 @@
+.tbl__strong { font-weight: 700; }
+.tbl__mono { font-size: 13px; }
+.table-card { padding: 8px 14px; overflow-x: auto; }
+.table-scroll { overflow-x: auto; }
+
+.tablet-status { display: inline-flex; align-items: center; gap: 6px; }
+
+.battery { display: inline-flex; align-items: center; gap: 8px; }
+.battery__box { width: 44px; height: 10px; border-radius: 3px; border: 1px solid #9aa3b5; display: block; }
+.battery__fill { display: block; height: 8px; background: var(--green); }
+.battery[data-low="true"] .battery__fill { background: var(--orange); }
+
+.panel { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.panel__title { font-size: 18px; }

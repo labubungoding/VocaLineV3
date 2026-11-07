@@ -1,0 +1,6 @@
+.standby-screen { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; text-align: center; padding: 32px; }
+.standby-screen__ring { width: 140px; height: 140px; border-radius: 50%; background: #d3e6e7; display: flex; align-items: center; justify-content: center; }
+.standby-screen__core { width: 84px; height: 84px; border-radius: 50%; background: #b5d4d6; }
+.standby-screen__bed { font-size: 18px; font-weight: 700; padding: 6px 16px; background: #fff; }
+.standby-screen__title { font-size: 34px; max-width: 620px; }
+.standby-screen__text { font-size: 18px; max-width: 520px; }

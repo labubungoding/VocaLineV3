@@ -1,0 +1,17 @@
+.modal-backdrop { position: fixed; inset: 0; background: rgba(19, 42, 44, .5); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
+.modal { width: 100%; max-width: 480px; max-height: calc(100vh - 32px); overflow: auto; background: #fff; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.modal__head { display: flex; align-items: flex-start; gap: 12px; }
+.modal__head > div { flex-grow: 1; display: flex; flex-direction: column; gap: 4px; }
+.modal__title { font-size: 21px; }
+.modal__actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(19, 42, 44, .35); z-index: 90; display: flex; justify-content: flex-end; }
+.drawer { width: 100%; max-width: 420px; height: 100%; overflow: auto; background: #fff; padding: 24px; display: flex; flex-direction: column; gap: 18px; box-shadow: -1px 0 0 var(--line); }
+
+.toast-container { position: fixed; left: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 8px; z-index: 200; max-width: min(420px, calc(100vw - 40px)); }
+.toast { padding: 12px 16px; border-radius: 10px; background: #16202b; color: #fff; font-size: 14px; box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+.toast--success { background: var(--green-soft); color: var(--green-ink); border: 1px solid var(--green); }
+.toast--error { background: var(--red-soft); color: #8a1c15; border: 1px solid var(--red); }
+.modal__body { display: flex; flex-direction: column; gap: 14px; }
+.modal__form { display: flex; flex-direction: column; gap: 14px; }
+.confirm__body { font-size: 15px; }

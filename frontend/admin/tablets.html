@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d4fb8" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/admin/admin.css" />
+    <link rel="stylesheet" href="/src/apps/admin/pages/tablets.css" />
+    <title>Tablet · Superadmin</title>
+  </head>
+  <body>
+    <div class="app-shell theme-admin">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <h1 class="page-title">Tablet</h1>
+          <p class="muted text-sm">
+            Tablet didaftarkan dan dipasangkan ke kasur oleh perawat dengan memindai QR di layar tablet. Di sini admin rumah sakit
+            memantau semua tablet dan menonaktifkan tablet yang rusak atau hilang.
+          </p>
+
+          <div class="card table-card">
+            <table id="sa-tablet-table" class="tbl tablets__table">
+              <thead>
+                <tr><th>Tablet</th><th>ID perangkat</th><th>Kasur</th><th>Status</th><th>Aksi</th></tr>
+              </thead>
+              <tbody id="sa-tablet-rows"></tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/admin/pages/tablets.js"></script>
+  </body>
+</html>

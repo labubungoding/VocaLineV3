@@ -1,0 +1,17 @@
+{
+  "name": "vocaline-backend",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend VocaLine (TypeScript, Node.js 22) pengganti backend Spring Boot. Tanpa dependensi runtime.",
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/main.ts",
+    "migrate": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/db/migrate.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.8.0"
+  }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3d4fb8" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/admin/admin.css" />
+    <link rel="stylesheet" href="/src/apps/admin/pages/layout.css" />
+    <title>Denah · Superadmin</title>
+  </head>
+  <body>
+    <div class="app-shell theme-admin">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <div class="layout">
+            <section class="card wards">
+              <h2 class="wards__title">Bangsal</h2>
+              <ul id="sa-ward-list" class="wards__list"></ul>
+              <button id="sa-btn-add-ward" type="button" class="btn btn--primary">+ Tambah bangsal</button>
+            </section>
+
+            <section class="layout__rooms">
+              <div class="page-head">
+                <h1 class="layout__title">Denah Bangsal <span id="sa-layout-ward-name"></span></h1>
+                <button id="sa-btn-add-room" type="button" class="btn">+ Tambah kamar</button>
+              </div>
+              <div id="sa-room-grid" class="room-grid"></div>
+              <p class="muted text-xs">Kamar atau kasur yang sedang dipakai pasien tidak bisa dihapus.</p>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/admin/pages/layout.js"></script>
+  </body>
+</html>

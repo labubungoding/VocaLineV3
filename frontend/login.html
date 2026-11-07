@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f6e74" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/auth/pages/login.css" />
+    <title>Masuk · VocalLine</title>
+  </head>
+  <body>
+    <div class="login">
+      <div class="card login__card">
+        <div class="login__head">
+          <img class="login__logo" src="/logo.png" alt="Vocaline" />
+          <h1 class="login__title">Masuk</h1>
+          <p class="muted login__sub">Untuk admin rumah sakit dan perawat. Pasien tidak perlu login.</p>
+        </div>
+
+        <form id="app-login-form" class="login__form" novalidate>
+          <p id="app-login-error" role="alert" class="alert alert--error" hidden></p>
+
+          <fieldset class="login__roles">
+            <legend class="login__legend">Masuk sebagai</legend>
+            <div id="app-login-role" role="radiogroup" aria-label="Pilih role" class="login__role-grid">
+              <button id="app-login-role-superadmin" type="button" role="radio" aria-checked="false" data-role="superadmin" class="role-option role-option--superadmin">
+                <b>Superadmin</b>
+                <span class="muted">Admin rumah sakit</span>
+              </button>
+              <button id="app-login-role-admin" type="button" role="radio" aria-checked="true" data-role="admin" class="role-option role-option--admin">
+                <b>Admin</b>
+                <span class="muted">Perawat</span>
+              </button>
+            </div>
+          </fieldset>
+
+          <label class="lbl">
+            Email
+            <input id="app-login-email" class="fi" type="email" required placeholder="nama@rumahsakit.id" autocomplete="username" />
+          </label>
+
+          <label class="lbl">
+            Kata sandi
+            <span class="login__password">
+              <input id="app-login-password" class="fi" type="password" required autocomplete="current-password" />
+              <button id="app-login-toggle-password" type="button" class="btn btn--icon" aria-label="Tampilkan kata sandi">Lihat</button>
+            </span>
+          </label>
+
+          <button id="app-login-submit" type="submit" class="btn btn--primary btn--block login__submit">Masuk sebagai Admin</button>
+
+          <p id="app-login-info" role="status" class="alert alert--ok" hidden></p>
+          <button id="app-login-forgot" type="button" class="btn btn--ghost login__forgot" hidden>Lupa kata sandi?</button>
+
+          <p class="muted login__hint">
+            Akun demo: <b>sari@rumahsakit.id</b> / rahasia123 (perawat) · <b>admin@rumahsakit.id</b> / admin123 (superadmin).
+            Tablet pasien: buka <a href="/tablet">/tablet</a>.
+          </p>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="/src/apps/auth/pages/login.js"></script>
+  </body>
+</html>

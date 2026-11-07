@@ -1,0 +1,3 @@
+.persona-teen  { --pt-fs: 18px; --pt-title: 28px; --pt-cap: 22px; --pt-btn: 52px; }
+.persona-adult { --pt-fs: 20px; --pt-title: 30px; --pt-cap: 24px; --pt-btn: 56px; }
+.persona-elder { --pt-fs: 24px; --pt-title: 38px; --pt-cap: 30px; --pt-btn: 68px; }

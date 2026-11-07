@@ -1,0 +1,8 @@
+.ended-screen { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; text-align: center; padding: 32px; }
+.ended-screen__check { width: 140px; height: 140px; border-radius: 50%; background: var(--green-soft); display: flex; align-items: center; justify-content: center; }
+.ended-screen__message { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.ended-screen__title { font-size: 36px; }
+.ended-screen__text { font-size: 20px; max-width: 560px; }
+.ended-screen__track { width: 280px; height: 6px; border-radius: 3px; background: var(--grey); }
+.ended-screen__bar { height: 6px; border-radius: 3px; background: var(--accent); }
+.ended-screen__count { font-size: 15px; }

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f6e74" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/nurse/nurse.css" />
+    <link rel="stylesheet" href="/src/apps/nurse/pages/schedule.css" />
+    <title>Jadwal · VocalLine</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <div class="schedule">
+            <h1 class="page-title">Jadwal pengingat makan</h1>
+            <p class="muted">Tablet mengingatkan pasien dengan suara sesuai persona pada jam yang diatur.</p>
+
+            <div class="card schedule__scope">
+              <div class="schedule__scope-field">
+                <span class="schedule__scope-label">Berlaku untuk</span>
+                <div id="nr-select-schedule-scope" role="radiogroup" aria-label="Cakupan jadwal" class="seg-group">
+                  <button type="button" role="radio" class="seg" data-value="ward" aria-checked="true">Seluruh bangsal</button>
+                  <button type="button" role="radio" class="seg" data-value="room" aria-checked="false">Per kamar</button>
+                </div>
+              </div>
+              <label id="nr-schedule-room-field" class="lbl schedule__room" hidden>
+                Kamar
+                <select id="nr-select-schedule-room" class="fi"></select>
+              </label>
+            </div>
+
+            <p id="nr-schedule-room-info" class="alert alert--info" hidden>
+              Kamar ini belum punya jadwal sendiri, jadi memakai jadwal seluruh bangsal.
+            </p>
+
+            <div id="nr-schedule-list" class="card schedule__list">
+              <div class="schedule-row schedule-row--head">
+                <span>Jam</span><span>Jenis</span><span>Aktif</span><span></span>
+              </div>
+              <div id="nr-schedule-rows"></div>
+              <button id="nr-btn-add-schedule" type="button" class="btn schedule__add">+ Tambah jadwal</button>
+            </div>
+
+            <div class="schedule__footer">
+              <span id="nr-schedule-dirty" class="muted text-sm" hidden>Ada perubahan yang belum disimpan</span>
+              <button id="nr-btn-save-schedule" type="button" class="btn btn--primary schedule__save">Simpan</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/nurse/pages/schedule.js"></script>
+  </body>
+</html>

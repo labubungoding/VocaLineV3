@@ -1,0 +1,23 @@
+.login { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.login__card { width: 100%; max-width: 420px; padding: 36px; display: flex; flex-direction: column; gap: 22px; }
+.login__head { display: flex; flex-direction: column; gap: 6px; }
+.login__logo { display: block; height: 48px; width: auto; max-width: 100%; align-self: flex-start; }
+.login__title { font-size: 26px; margin-top: 10px; }
+.login__sub { font-size: 14px; }
+.login__form { display: flex; flex-direction: column; gap: 16px; }
+
+.login__roles { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.login__legend { font-size: 14px; font-weight: 700; padding: 0; margin-bottom: 6px; }
+.login__role-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+
+.role-option { font: inherit; text-align: left; cursor: pointer; padding: 10px 12px; min-height: 56px; border-radius: 10px; border: 2px solid #d5e1e2; background: #fff; color: #132a2c; display: flex; flex-direction: column; gap: 2px; }
+.role-option b { font-size: 15px; }
+.role-option span { font-size: 12px; }
+.role-option--superadmin[aria-checked="true"] { border-color: #3d4fb8; background: #e3e7fa; }
+.role-option--admin[aria-checked="true"] { border-color: #0f6e74; background: #dcefef; }
+
+.login__password { display: flex; gap: 8px; }
+.login__password .fi { flex-grow: 1; }
+.login__submit { margin-top: 6px; font-size: 15px; min-height: 48px; }
+.login__hint { font-size: 12px; }
+.login__forgot { align-self: center; font-size: 14px; color: var(--accent); }

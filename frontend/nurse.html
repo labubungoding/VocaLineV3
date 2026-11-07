@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f6e74" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/apps/nurse/nurse.css" />
+    <link rel="stylesheet" href="/src/apps/nurse/pages/dashboard.css" />
+    <title>Dashboard perawat · VocalLine</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header id="app-header" class="app-header"></header>
+
+      <div class="app-body">
+        <nav id="app-sidebar" class="card app-sidebar" aria-label="Navigasi"></nav>
+
+        <main class="app-main">
+          <div class="dashboard">
+            <section class="dashboard__map">
+              <div class="dashboard__map-head">
+                <h1 class="dashboard__title">Denah Bangsal <span id="nr-ward-name"></span></h1>
+                <span class="muted dashboard__hint">
+                  Klik kasur kosong untuk aktivasi, kasur terisi untuk detail, kasur tanpa tablet untuk memasangkan tablet
+                </span>
+              </div>
+
+              <div id="nr-floor-map" class="card floor-map"></div>
+
+              <div id="nr-map-legend" class="map-legend">
+                <span><i class="legend legend--red"></i>Darurat</span>
+                <span><i class="legend legend--orange"></i>Butuh bantuan</span>
+                <span><i class="legend legend--green"></i>Aman</span>
+                <span><i class="legend legend--empty"></i>Kosong</span>
+                <span><i class="legend legend--handling"></i>Sedang ditangani</span>
+                <span><i class="legend legend--no-tablet"></i>Belum ada tablet</span>
+              </div>
+            </section>
+
+            <aside id="nr-alarm-queue" class="queue">
+              <div class="queue__head">
+                <h2 class="queue__title">Antrean alarm</h2>
+                <span id="nr-alarm-count" class="queue__count" data-waiting="0">0 menunggu</span>
+              </div>
+
+              <div id="nr-filter-alarm" role="tablist" aria-label="Filter alarm" class="seg-group">
+                <button type="button" role="tab" class="seg" data-value="all" aria-selected="true">Semua</button>
+                <button type="button" role="tab" class="seg" data-value="waiting" aria-selected="false">Menunggu</button>
+                <button type="button" role="tab" class="seg" data-value="handling" aria-selected="false">Ditangani</button>
+              </div>
+
+              <div id="nr-alarm-list" class="queue__list"></div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="/src/apps/nurse/pages/dashboard.js"></script>
+  </body>
+</html>

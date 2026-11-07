@@ -1,0 +1,13 @@
+.settings { max-width: 860px; display: flex; flex-direction: column; gap: 18px; }
+
+.settings__card { padding: 18px; display: flex; flex-direction: column; }
+.settings__card--gap { gap: 12px; }
+.settings__title { font-size: 17px; }
+.settings__sub { margin-top: 4px; }
+.settings__note { padding: 12px; border-radius: 8px; background: #f4f7f7; }
+
+.age-row { display: grid; grid-template-columns: 150px repeat(2, minmax(0, 1fr)); gap: 14px; align-items: end; padding: 14px 0; border-bottom: 1px solid #e6e9f0; }
+.age-row--last { border-bottom: 0; }
+.age-row__note { font-size: 14px; padding-bottom: 12px; }
+
+.escalation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 10px; }
