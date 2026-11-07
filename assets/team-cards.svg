@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 250" width="100%" height="250">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#091b24" />
+      <stop offset="100%" stop-color="#040e13" />
+    </linearGradient>
+
+    <linearGradient id="gradBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <style>
+      .team-avatar {
+        animation: floatAvatar 3.5s ease-in-out infinite alternate;
+      }
+      .av-delay1 { animation-delay: 0.1s; }
+      .av-delay2 { animation-delay: 0.4s; }
+      .av-delay3 { animation-delay: 0.7s; }
+      .av-delay4 { animation-delay: 1.0s; }
+      .av-delay5 { animation-delay: 1.3s; }
+
+      @keyframes floatAvatar {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-5px); }
+      }
+
+      .card-item {
+        transition: transform 0.3s ease;
+      }
+      .card-item:hover {
+        transform: translateY(-4px);
+      }
+    </style>
+  </defs>
+
+  <!-- CARD 1: ALKHALIFI (PM / QA) -->
+  <g class="card-item" transform="translate(15, 10)">
+    <rect width="170" height="230" rx="14" fill="url(#cardBg)" stroke="#10b981" stroke-width="1.2" filter="url(#cardShadow)" />
+    <!-- Avatar circle -->
+    <g class="team-avatar av-delay1" transform="translate(85, 55)">
+      <circle cx="0" cy="0" r="30" fill="#064e3b" stroke="#10b981" stroke-width="2" />
+      <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22">👑</text>
+    </g>
+    <!-- Name -->
+    <text x="85" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11.5" font-weight="700" fill="#f8fafc">
+      ALKHALIFI ZIKRI H.
+    </text>
+    <!-- Role Badge -->
+    <rect x="15" y="126" width="140" height="22" rx="11" fill="#064e3b" stroke="#10b981" stroke-width="0.8" />
+    <text x="85" y="141" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#6ee7b7">
+      PROJECT MANAGER
+    </text>
+    <!-- Secondary Role -->
+    <rect x="25" y="154" width="120" height="18" rx="9" fill="#022c22" stroke="#059669" stroke-width="0.6" />
+    <text x="85" y="167" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="600" fill="#a7f3d0">
+      QA &amp; Security Tester
+    </text>
+    <!-- Description -->
+    <text x="85" y="196" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Sprint, E2E Testing,
+    </text>
+    <text x="85" y="209" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Zero-Regression Lead
+    </text>
+  </g>
+
+  <!-- CARD 2: DZHILLAN (Frontend) -->
+  <g class="card-item" transform="translate(195, 10)">
+    <rect width="170" height="230" rx="14" fill="url(#cardBg)" stroke="#06b6d4" stroke-width="1.2" filter="url(#cardShadow)" />
+    <g class="team-avatar av-delay2" transform="translate(85, 55)">
+      <circle cx="0" cy="0" r="30" fill="#083344" stroke="#06b6d4" stroke-width="2" />
+      <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22">💻</text>
+    </g>
+    <text x="85" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11.5" font-weight="700" fill="#f8fafc">
+      DZHILLAN DZHALILA
+    </text>
+    <rect x="20" y="126" width="130" height="22" rx="11" fill="#083344" stroke="#06b6d4" stroke-width="0.8" />
+    <text x="85" y="141" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#67e8f9">
+      FRONT END DEV
+    </text>
+    <rect x="25" y="154" width="120" height="18" rx="9" fill="#042f2e" stroke="#0891b2" stroke-width="0.6" />
+    <text x="85" y="167" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="600" fill="#a5f3fc">
+      Tablet UI &amp; Voice Web
+    </text>
+    <text x="85" y="196" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Vine Avatar Blob,
+    </text>
+    <text x="85" y="209" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Nurse Station Canvas
+    </text>
+  </g>
+
+  <!-- CARD 3: RENDI (Machine Learning) -->
+  <g class="card-item" transform="translate(375, 10)">
+    <rect width="170" height="230" rx="14" fill="url(#cardBg)" stroke="#8b5cf6" stroke-width="1.2" filter="url(#cardShadow)" />
+    <g class="team-avatar av-delay3" transform="translate(85, 55)">
+      <circle cx="0" cy="0" r="30" fill="#2e1065" stroke="#8b5cf6" stroke-width="2" />
+      <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22">🧠</text>
+    </g>
+    <text x="85" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11.5" font-weight="700" fill="#f8fafc">
+      RENDI WAHYUDI
+    </text>
+    <rect x="20" y="126" width="130" height="22" rx="11" fill="#2e1065" stroke="#8b5cf6" stroke-width="0.8" />
+    <text x="85" y="141" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#c4b5fd">
+      MACHINE LEARNING
+    </text>
+    <rect x="25" y="154" width="120" height="18" rx="9" fill="#1e1b4b" stroke="#7c3aed" stroke-width="0.6" />
+    <text x="85" y="167" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="600" fill="#ddd6fe">
+      IndoBERT &amp; Whisper STT
+    </text>
+    <text x="85" y="196" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Intent, Emotion NLP,
+    </text>
+    <text x="85" y="209" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Gemini Guardrails
+    </text>
+  </g>
+
+  <!-- CARD 4: KHAIRUNNISA (UI/UX Designer) -->
+  <g class="card-item" transform="translate(555, 10)">
+    <rect width="170" height="230" rx="14" fill="url(#cardBg)" stroke="#ec4899" stroke-width="1.2" filter="url(#cardShadow)" />
+    <g class="team-avatar av-delay4" transform="translate(85, 55)">
+      <circle cx="0" cy="0" r="30" fill="#500724" stroke="#ec4899" stroke-width="2" />
+      <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22">🎨</text>
+    </g>
+    <text x="85" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#f8fafc">
+      KHAIRUNNISA M.
+    </text>
+    <rect x="20" y="126" width="130" height="22" rx="11" fill="#500724" stroke="#ec4899" stroke-width="0.8" />
+    <text x="85" y="141" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#f472b6">
+      UI/UX DESIGNER
+    </text>
+    <rect x="25" y="154" width="120" height="18" rx="9" fill="#3b0764" stroke="#db2777" stroke-width="0.6" />
+    <text x="85" y="167" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="600" fill="#fbcfe8">
+      Figma Design System
+    </text>
+    <text x="85" y="196" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Adaptive 3-Persona,
+    </text>
+    <text x="85" y="209" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Elderly Accessibility
+    </text>
+  </g>
+
+  <!-- CARD 5: AKHTAR (Backend) -->
+  <g class="card-item" transform="translate(735, 10)">
+    <rect width="170" height="230" rx="14" fill="url(#cardBg)" stroke="#3b82f6" stroke-width="1.2" filter="url(#cardShadow)" />
+    <g class="team-avatar av-delay5" transform="translate(85, 55)">
+      <circle cx="0" cy="0" r="30" fill="#172554" stroke="#3b82f6" stroke-width="2" />
+      <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22">⚙️</text>
+    </g>
+    <text x="85" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11.5" font-weight="700" fill="#f8fafc">
+      AKHTAR FADHILAH
+    </text>
+    <rect x="20" y="126" width="130" height="22" rx="11" fill="#172554" stroke="#3b82f6" stroke-width="0.8" />
+    <text x="85" y="141" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#93c5fd">
+      BACKEND ENGINEER
+    </text>
+    <rect x="25" y="154" width="120" height="18" rx="9" fill="#0f172a" stroke="#2563eb" stroke-width="0.6" />
+    <text x="85" y="167" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="600" fill="#bfdbfe">
+      Node 22 &amp; PostgreSQL
+    </text>
+    <text x="85" y="196" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Zero-Dep Architecture,
+    </text>
+    <text x="85" y="209" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#94a3b8">
+      Realtime SSE Hub &amp; DB
+    </text>
+  </g>
+</svg>
