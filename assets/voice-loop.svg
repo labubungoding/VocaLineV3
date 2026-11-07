@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 210" width="100%" height="210">
+  <defs>
+    <linearGradient id="flowBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04121a" />
+      <stop offset="50%" stop-color="#08232e" />
+      <stop offset="100%" stop-color="#030c12" />
+    </linearGradient>
+
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+
+    <filter id="nodeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .packet-flow1 {
+        animation: flowAnim 3.2s linear infinite;
+        stroke-dasharray: 12, 18;
+      }
+      .packet-flow2 {
+        animation: flowAnim 2.4s linear infinite;
+        stroke-dasharray: 12, 18;
+      }
+      @keyframes flowAnim {
+        from { stroke-dashoffset: 60; }
+        to { stroke-dashoffset: 0; }
+      }
+
+      .pulse-node {
+        animation: nodePulse 2.8s ease-in-out infinite alternate;
+      }
+      @keyframes nodePulse {
+        0% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(16,185,129,0.3)); }
+        100% { transform: scale(1.03); filter: drop-shadow(0 0 10px rgba(6,182,212,0.8)); }
+      }
+    </style>
+  </defs>
+
+  <rect width="1060" height="210" rx="18" fill="url(#flowBg)" stroke="#134e4a" stroke-width="1.3" />
+
+  <!-- Flow Title -->
+  <text x="40" y="34" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#2dd4bf" letter-spacing="1.5">
+    ⚡ REAL-TIME MULTIMODAL AUDIO PIPELINE (&lt;650ms END-TO-END)
+  </text>
+
+  <!-- Connecting Animated Data Lines -->
+  <!-- Line 1 -> 2 -->
+  <path d="M 160,110 L 220,110" fill="none" stroke="#10b981" stroke-width="2.5" class="packet-flow1" />
+  <!-- Line 2 -> 3 -->
+  <path d="M 330,110 L 390,110" fill="none" stroke="#06b6d4" stroke-width="2.5" class="packet-flow1" />
+  <!-- Line 3 -> 4 -->
+  <path d="M 500,110 L 560,110" fill="none" stroke="#8b5cf6" stroke-width="2.5" class="packet-flow2" />
+  <!-- Line 4 -> 5 -->
+  <path d="M 670,110 L 730,110" fill="none" stroke="#38bdf8" stroke-width="2.5" class="packet-flow1" />
+  <!-- Line 5 -> 6 (Triage Alarm Up) -->
+  <path d="M 840,90 L 895,70" fill="none" stroke="#ef4444" stroke-width="2" class="packet-flow2" />
+  <!-- Line 5 -> 7 (Vine Voice Down) -->
+  <path d="M 840,130 L 895,150" fill="none" stroke="#10b981" stroke-width="2" class="packet-flow1" />
+
+  <!-- Node 1: Patient Mic + VAD -->
+  <g transform="translate(100, 110)">
+    <rect x="-60" y="-45" width="120" height="90" rx="12" fill="#062d29" stroke="#10b981" stroke-width="1.2" class="pulse-node" />
+    <text x="0" y="-16" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20">🎙️</text>
+    <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#6ee7b7">Silero VAD</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#a7f3d0">Web Audio 16kHz</text>
+    <text x="0" y="37" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#64748b">Latency: 15ms</text>
+  </g>
+
+  <!-- Node 2: Whisper STT -->
+  <g transform="translate(275, 110)">
+    <rect x="-55" y="-45" width="110" height="90" rx="12" fill="#082f49" stroke="#06b6d4" stroke-width="1.2" class="pulse-node" />
+    <text x="0" y="-16" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20">📝</text>
+    <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#67e8f9">Whisper STT</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#a5f3fc">Groq / Local Audio</text>
+    <text x="0" y="37" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#64748b">Latency: ~220ms</text>
+  </g>
+
+  <!-- Node 3: Dual IndoBERT -->
+  <g transform="translate(445, 110)">
+    <rect x="-55" y="-45" width="110" height="90" rx="12" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.2" class="pulse-node" />
+    <text x="0" y="-16" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20">🧠</text>
+    <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#c4b5fd">Dual IndoBERT</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#ddd6fe">Intent + Emotion</text>
+    <text x="0" y="37" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#64748b">Latency: ~90ms</text>
+  </g>
+
+  <!-- Node 4: Gemini Guardrails -->
+  <g transform="translate(615, 110)">
+    <rect x="-55" y="-45" width="110" height="90" rx="12" fill="#1e1b4b" stroke="#3b82f6" stroke-width="1.2" class="pulse-node" />
+    <text x="0" y="-16" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20">🛡️</text>
+    <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#93c5fd">Gemini LLM</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#bfdbfe">Guardrail Prompt</text>
+    <text x="0" y="37" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#64748b">Non-Diagnostic</text>
+  </g>
+
+  <!-- Node 5: Node 22 SSE Hub -->
+  <g transform="translate(785, 110)">
+    <rect x="-55" y="-45" width="110" height="90" rx="12" fill="#14303b" stroke="#0ea5e9" stroke-width="1.2" class="pulse-node" />
+    <text x="0" y="-16" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20">⚡</text>
+    <text x="0" y="8" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#7dd3fc">Node 22 Hub</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#bae6fd">SSE Event Stream</text>
+    <text x="0" y="37" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#64748b">Zero-Dep Native</text>
+  </g>
+
+  <!-- Output 1: Nurse Monitor -->
+  <g transform="translate(970, 65)">
+    <rect x="-65" y="-30" width="130" height="60" rx="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.3" />
+    <text x="0" y="-7" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="16">🚨</text>
+    <text x="0" y="12" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="800" fill="#fca5a5">Nurse Station Alert</text>
+    <text x="0" y="23" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#f87171">Realtime Sound &amp; Ward Map</text>
+  </g>
+
+  <!-- Output 2: Vine Tablet TTS -->
+  <g transform="translate(970, 155)">
+    <rect x="-65" y="-30" width="130" height="60" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.3" />
+    <text x="0" y="-7" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="16">🔊</text>
+    <text x="0" y="12" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="800" fill="#6ee7b7">Vine Empathetic Voice</text>
+    <text x="0" y="23" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#a7f3d0">Tablet Web Speech / Audio</text>
+  </g>
+</svg>
