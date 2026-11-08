@@ -2,6 +2,9 @@
 .env.*
 !.env.example
 
+/skill-lock.json
+.agents
+
 node_modules/
 **/node_modules/
 
