@@ -171,38 +171,38 @@ Sistem secara cerdas menyesuaikan parameter interaksi berdasarkan usia pasien:
 
 ```mermaid
 flowchart TD
-    subgraph ClientLayer["🖥️ Frontend Tier (Tablet Pasien & Konsol Perawat)"]
-        Tablet["📱 Tablet Pasien (PWA)\n• Web Audio & Silero VAD (16kHz)\n• Avatar Responsif 'Vine'\n• Adaptive Persona UI Engine"]
-        Nurse["👩‍⚕️ Pos Perawat (Nurse Station)\n• Antrean Prioritas Realtime\n• Denah Bangsal Interaktif\n• One-Click Claim Alarm"]
-        Admin["⚙️ Portal Superadmin\n• Editor Denah & Tata Letak\n• Pemasangan Tablet (QR Code)\n• Manajemen Staf & Eskalasi"]
+    subgraph ClientLayer["🖥️ Frontend Tier - Tablet Pasien & Konsol Perawat"]
+        Tablet["📱 Tablet Pasien PWA<br/>• Web Audio & Silero VAD 16kHz<br/>• Avatar Responsif Vine<br/>• Adaptive Persona UI Engine"]
+        Nurse["👩‍⚕️ Pos Perawat - Nurse Station<br/>• Antrean Prioritas Realtime<br/>• Denah Bangsal Interaktif<br/>• One-Click Claim Alarm"]
+        Admin["⚙️ Portal Superadmin<br/>• Editor Denah & Tata Letak<br/>• Pemasangan Tablet QR Code<br/>• Manajemen Staf & Eskalasi"]
     end
 
     subgraph GatewayLayer["🌐 Edge Proxy & Security Tier"]
-        Cloudflare["🛡️ Cloudflare Zero-Trust Tunnel\n(Enkripsi TLS Terpusat)"]
-        Caddy["⚡ Caddy Web Server v2.8\n• Reverse Proxy & HTTP/2\n• SSE Stream Flushing (-1)\n• Clean URLs Routing"]
+        Cloudflare["🛡️ Cloudflare Zero-Trust Tunnel<br/>Enkripsi TLS Terpusat"]
+        Caddy["⚡ Caddy Web Server v2.8<br/>• Reverse Proxy & HTTP/2<br/>• SSE Stream Flushing unbuffered<br/>• Clean URLs Routing"]
     end
 
-    subgraph BackendLayer["⚙️ Core Backend Tier (Node.js 22 Native)"]
-        App["🚀 VocaLine Engine\n(Zero-Dependency TypeScript)\n• Scrypt Auth & Session Token\n• Triage & Alarm Lifecycle Hub\n• Server-Sent Events (SSE) Hub"]
-        DB[(🐘 PostgreSQL 17\n• Skema Relasional Klinis\n• Row-Level Security\n• Audit Event Triggers)]
+    subgraph BackendLayer["⚙️ Core Backend Tier - Node.js 22 Native"]
+        App["🚀 VocaLine Engine<br/>Zero-Dependency TypeScript<br/>• Scrypt Auth & Session Token<br/>• Triage & Alarm Lifecycle Hub<br/>• Server-Sent Events SSE Hub"]
+        DB[("🐘 PostgreSQL 17<br/>• Skema Relasional Klinis<br/>• Row-Level Security RLS<br/>• Audit Event Triggers")]
     end
 
-    subgraph MLLayer["🧠 Machine Learning Tier (Python FastAPI)"]
-        STT["🎙️ Speech-To-Text\n(Whisper AI / Groq API)"]
-        NLP["🤖 Dual IndoBERT Models\n• Intent Triage (14 Kelas)\n• Emotion Detection (7 Kelas)"]
-        LLM["🛡️ LLM Guardrails Engine\n(Gemini 3.5 Flash / Groq)\n• Non-Diagnostic Assurance\n• Empathetic Conversation"]
+    subgraph MLLayer["🧠 Machine Learning Tier - Python FastAPI"]
+        STT["🎙️ Speech-To-Text<br/>Whisper AI / Groq API"]
+        NLP["🤖 Dual IndoBERT Models<br/>• Intent Triage 14 Kelas<br/>• Emotion Detection 7 Kelas"]
+        LLM["🛡️ LLM Guardrails Engine<br/>Gemini 3.5 Flash / Groq<br/>• Non-Diagnostic Assurance<br/>• Empathetic Conversation"]
     end
 
-    Tablet -->|Voice Audio Stream (WebM/Opus)| Caddy
-    Nurse <-->|Real-time SSE Event Stream| Caddy
-    Admin <-->|REST Management API| Caddy
+    Tablet -->|"Voice Audio Stream WebM/Opus"| Caddy
+    Nurse <-->|"Real-time SSE Event Stream"| Caddy
+    Admin <-->|"REST Management API"| Caddy
     Cloudflare <--> Caddy
     Caddy <--> App
     App <--> DB
-    App <-->|Header X-API-Key| STT
+    App <-->|"Header X-API-Key"| STT
     STT --> NLP
     NLP --> LLM
-    LLM -->|Token Stream SSE| App
+    LLM -->|"Token Stream SSE"| App
 ```
 
 ---
@@ -222,25 +222,25 @@ sequenceDiagram
     actor Perawat as 👩‍⚕️ Pos Perawat
 
     Pasien->>Tablet: "Vine, dada saya sakit sekali, sesak..."
-    Note over Tablet: Silero VAD mendeteksi akhir suara
+    Note over Tablet: Silero VAD mendeteksi jeda hening bicara
     Tablet->>Caddy: POST /api/converse-stream (Audio Opus 16kHz)
     Caddy->>Backend: Proxy ke Engine Backend
     Backend->>ML: POST /converse-stream (Audio Base64)
 
-    Note over ML: Whisper STT mentranskrip audio<br/>IndoBERT mengklasifikasikan: intent=nyeri_dada, level=MERAH
-    ML-->>Backend: SSE Event 'header': level=MERAH, ringkasan="Nyeri Dada & Sesak"
+    Note over ML: Whisper STT transkripsi audio<br/>IndoBERT klasifikasi: intent=nyeri_dada, level=MERAH
+    ML-->>Backend: SSE Event header: level=MERAH, ringkasan="Nyeri Dada & Sesak"
     Backend-->>Caddy: SSE Emit ke pos perawat
     Caddy-->>Perawat: 🚨 BEEP ALARM MERAH! Kamar 204 Kasur B
 
     Note over ML: Gemini menyusun kalimat penenang dengan guardrails
-    ML-->>Backend: SSE Event 'token': "Tenang Bapak, saya sudah memanggil perawat..."
+    ML-->>Backend: SSE Event token: "Tenang ya Bapak, saya sudah memanggil perawat..."
     Backend-->>Tablet: Streaming balasan suara Vine
     Tablet-->>Pasien: Vine berbicara menenangkan pasien
 
     Perawat->>Caddy: POST /api/alarms/:id/claim
     Caddy->>Backend: Verifikasi Perawat & Kunci Status Alarm
     Backend-->>Perawat: Status Kasur berubah jadi "Handling" (Kuning-Klaim)
-    Perawat->>Pasien: Masuk ke kamar menangani pasien dalam <45 detik!
+    Perawat->>Pasien: Masuk ke kamar menangani pasien (kurang dari 45 detik)
 ```
 
 ---
